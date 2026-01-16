@@ -1,19 +1,37 @@
 name: CI -> Deploy to My website
+
 on:
   push:
     branches:
       - main
+
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      # Here is the deployment action
-      - name: Prepare public_html
-        uses: airvzxf/ftp-deployment-action@latest
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Debug project structure
+        run: |
+          pwd
+          ls -la
+
+      - name: Deploy Django project via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
+          username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local_dir: "/nafuv-website/"
-  
+
+          local-dir: ./
+          remote-dir: /public_html/nafuv-website/
+
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/__pycache__/**
+            **/*.pyc
+            **/venv/**
+            **/.env
