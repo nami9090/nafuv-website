@@ -8,10 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       # Here is the deployment action
-      - name: Upload from public_html via FTP
+      - name: Prepare public_html
+        run: mkdir -p public_html && cp -r [SOURCE_DIR]/* public_html/
         uses: airvzxf/ftp-deployment-action@latest
         with:
           server: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local_dir: "./public_html"
+  
