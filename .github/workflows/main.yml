@@ -10,41 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # 1️⃣ Récupération du code
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2️⃣ Debug (important pour éviter les erreurs de chemin)
       - name: Debug project structure
         run: |
-          echo "Current directory:"
           pwd
-          echo "Files:"
           ls -la
 
-      # 3️⃣ Déploiement FTP (stable)
-      - name: Deploy Django project via FTP
+      - name: Deploy Django project via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
 
-          # 📂 IMPORTANT
+          protocol: sftp
+          port: 22
+
           local-dir: ./
-          remote-dir: /public_html/nafuv-website/
+          server-dir: /public_html/nafuv-website/
 
-          # 🔐 Connexion FTP sécurisée (évite les timeouts)
-          protocol: ftp
-          port: 21
-          security: loose
-
-          # ⏱️ Anti-timeout
           timeout: 600000
           log-level: verbose
           dangerous-clean-slate: false
 
-          # 🚫 Fichiers à exclure
           exclude: |
             **/.git*
             **/.github/**
