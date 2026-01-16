@@ -1,4 +1,4 @@
-name: CI -> Deploy Django Website
+name: CI -> Deploy Django Website (SFTP)
 
 on:
   push:
@@ -18,29 +18,15 @@ jobs:
           pwd
           ls -la
 
-      - name: Deploy Django project via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+      - name: Deploy Django project via SFTP (SSH)
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-
-          protocol: sftp
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
           port: 22
 
-          local-dir: ./
-          server-dir: /public_html/nafuv-website/
+          source: "."
+          target: "/home/${{ secrets.SSH_USER }}/public_html/nafuv-website"
 
-          timeout: 600000
-          log-level: verbose
-          dangerous-clean-slate: false
-
-          exclude: |
-            **/.git*
-            **/.github/**
-            **/__pycache__/**
-            **/*.pyc
-            **/venv/**
-            **/env/**
-            **/.env
-            **/node_modules/**
+          rm: false
