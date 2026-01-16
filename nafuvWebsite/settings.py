@@ -25,12 +25,13 @@ SECRET_KEY = 'django-insecure-kn*k*dt5*!$o8-_h@xs(uuc=x9ms557(wwu%8d&21)z!u#vkfl
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+# DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     # 'nami-industry-web-template-django.onrender.com'
-    # 'nafuv.org'
-    '*'
+    'nafuv.org'
+    # '*'
 ]
 
 
@@ -82,21 +83,21 @@ WSGI_APPLICATION = 'nafuvWebsite.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'nafuv_db',
-        'USER': 'nami',
-        'PASSWORD': 'nami@tess',
-        'HOST':'localhost'
-    }
     # 'default': {
-    #     'ENGINE': 'django.db.backends.mysql',
-    #     'NAME': 'dttrabzf_musee_v',
-    #     'USER': 'dttrabzf_nami_user',
-    #     'PASSWORD': '123soleil@2025',
-    #     'HOST':'localhost',
-    #     'PORT': '3306',
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'nafuv_db',
+    #     'USER': 'nami',
+    #     'PASSWORD': 'nami@tess',
+    #     'HOST':'localhost'
     # }
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'dttrabzf_musee_v',
+        'USER': 'dttrabzf_nami_user',
+        'PASSWORD': '123soleil@2025',
+        'HOST':'localhost',
+        'PORT': '3306',
+    }
 }
 
 
