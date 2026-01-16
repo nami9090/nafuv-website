@@ -1,0 +1,100 @@
+{% extends 'master.html' %}
+{% block title %}
+  Fuliru, Vira, Museum | Teams
+{% endblock %}
+
+{% block content %}
+<div class="agents-page">
+  <main class="main">
+
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Teams</h1>
+              <p class="mb-0"></code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Agents</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Agents Section -->
+    <section id="agents" class="agents section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+          {% for team in teams %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="member">
+              <div class="pic"><img src="{{ team.image_pic.url }}" class="img-fluid" alt=""></div>
+              <div class="member-info">
+                <h4>{{ team.name }}</h4>
+                <span>{{ team.role }}</span>
+                <div class="social">
+                  <a href="{{ team.lien_1 }}"><i class="bi bi-twitter-x"></i></a>
+                  <a href="{{ team.lien_2 }}"><i class="bi bi-facebook"></i></a>
+                  <a href="{{ team.lien_3 }}"><i class="bi bi-instagram"></i></a>
+                  <a href="{{ team.lien_4 }}"><i class="bi bi-linkedin"></i></a>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Team Member -->
+          {% endfor %}
+        </div>
+
+      </div>
+
+    </section><!-- /Agents Section -->
+    <section>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Choose your amount here:</p>
+              <button class="btn btn-outline-success">10$</button>
+              <button class="btn btn-outline-success">30$</button>
+              <button class="btn btn-outline-success">50$</button>
+              <button class="btn btn-outline-success">70$</button>
+              <button class="btn btn-outline-success">100$</button>
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Fullname:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
+          </div>
+         </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}

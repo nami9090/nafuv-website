@@ -1,0 +1,174 @@
+{% extends 'master.html' %}
+{% block title %}
+  Fuliru, Vira, Museum | {{singleService.title}}
+{% endblock %}
+
+{% block content %}
+<div class="service-details-page">
+  <main class="main">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>{{ singleService.title }}</h1>
+              <p class="mb-0">{{ singleService.details |truncatewords:10 }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Service Details</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Service Details Section -->
+    <section id="service-details" class="service-details section">
+
+      <div class="container">
+
+        <div class="row gy-5">
+
+          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="service-box">
+              <h4>Services List</h4>
+              <div class="services-list">
+                {% for service in services %}
+                <a href="{{service.slug}}" class="{% if service.title == singleService.title %}active{% endif %}">
+                  <i class="bi bi-arrow-right-circle"></i><span>{{ service.title }}</span>
+                </a>
+                {% endfor %}
+              </div>
+            </div><!-- End Services List -->
+
+            {% comment %} <div class="service-box">
+              <h4>Download Catalog</h4>
+              <div class="download-catalog">
+                <a href="#"><i class="bi bi-filetype-pdf"></i><span>Catalog PDF</span></a>
+                <a href="#"><i class="bi bi-file-earmark-word"></i><span>Catalog DOC</span></a>
+              </div>
+            </div><!-- End Services List --> {% endcomment %}
+
+            <div class="help-box d-flex flex-column justify-content-center align-items-center">
+              <i class="bi bi-headset help-icon"></i>
+              <h4>Have a Question?</h4>
+              <p class="d-flex align-items-center mt-2 mb-0"><i class="bi bi-telephone me-2"></i> <span>+1 817 881 2876</span></p>
+              <p class="d-flex align-items-center mt-1 mb-0"><i class="bi bi-envelope me-2"></i> <a href="mailto:info@nafuv.org">info@nafuv.org</a></p>
+            </div>
+
+          </div>
+
+          <div class="col-lg-8 ps-lg-5" data-aos="fade-up" data-aos-delay="200">
+            <img src="{{ singleService.image_pic.url }}" alt="{{ singleService.title }}" class="img-fluid services-img">
+            <!-- Tabs -->
+            <ul class="nav nav-underline mb-3">
+                <li class="nav-item">
+                  <a class="nav-link active" data-bs-toggle="pill" href="#real-estate-2-tab1">
+                  <i class="bi bi-info-circle"></i> {{ singleService.title }}
+                </a>
+              </li>
+              {% if singleService.iskingdom %}
+              <li class="nav-item">
+                <a class="nav-link " data-bs-toggle="pill" href="#real-estate-2-tab2">
+                  <i class="bi bi-diagram-3"></i> Royal bloodline
+                </a>
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a class="nav-link " data-bs-toggle="pill" href="#real-estate-2-tab3">
+                
+                  <i class="bi bi-graph-up-arrow"></i> Benefits
+              
+                </a>
+              </li>
+            </ul><!-- End Tabs -->
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+
+              <div class="tab-pane fade show active" id="real-estate-2-tab1">
+                <h3>{{ singleService.title }}</h3>
+                <p>
+                  {{singleService.details}}
+                </p>
+              </div><!-- End Tab 1 Content -->
+
+              <div class="tab-pane fade" id="real-estate-2-tab2" role="tabpanel" aria-labelledby="process-tab">
+                {% comment %} <img src="{% static 'assets/img/floor-plan.jpg'%}" alt="" class="img-fluid"> {% endcomment %}
+                <div class="process-timeline">
+                  {% for item in serviceD %}
+                      <div class="timeline-item">
+                        <div class="timeline-marker">{{ item.id }}</div>
+                        <div class="timeline-content">
+                          <h4>{{ item.yearOfTaken | date:'Y' }} - {{ item.yearOfDeath | date:'Y' }}</h4>
+                          <img src="{{ item.image.url }}" alt="Image" width="240" loading="lazy">
+                          <p>
+                            <li style="color: {% if item.encore_vivant %}green{% else %}red{% endif %};">
+                            {{ item }}
+                            </li>
+                          </p>
+                        </div>
+                      </div>
+                    {% endfor %}
+                  </div>
+              </div><!-- End Tab 2 Content -->
+
+              <div class="tab-pane fade" id="real-estate-2-tab3">
+                <p>Under manintenace</p>
+              </div><!-- End Tab 3 Content -->
+
+            </div><!-- End Tab Content -->
+          </div>
+        </div>
+
+      </div>
+
+    </section><!-- /Service Details Section -->
+    <section>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Choose your amount here:</p>
+              <button class="btn btn-outline-success">10$</button>
+              <button class="btn btn-outline-success">30$</button>
+              <button class="btn btn-outline-success">50$</button>
+              <button class="btn btn-outline-success">70$</button>
+              <button class="btn btn-outline-success">100$</button>
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Fullname:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
+          </div>
+         </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}

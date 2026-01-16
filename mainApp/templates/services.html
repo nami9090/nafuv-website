@@ -1,0 +1,91 @@
+{% extends 'master.html' %}
+{% block title %}
+  Fuliru, Vira, Museum | Services
+{% endblock %}
+{% block content %}
+<div class="services-page">
+  <main class="main">
+    <!-- Page Title -->
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              <h1>Services</h1>
+              <p class="mb-0">
+                The primary activities of the NAFV Into consists of a virtual museum and a physical cultural museum in Uvira in the Democratic Republic of the Congo. The virtual museum on the website virtually preserves culture of the Fuliiru and Vira peoples for the purpose of online education and research. Also the virtual museum is a source of experiment for young generations encouraged to put their hands on the plight during our yearly exhibition at the headquarter.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Services</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <!-- Services Section -->
+    <section id="services" class="services section">
+
+      <div class="container">
+        <div class="row gy-4">
+          {% for service in services %}
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="service-item  position-relative">
+              <img src="{{ service.image_pic.url }}" class="img-fluid">
+              <a href="service_details/{{service.slug}}" class="stretched-link">
+                <h3>{{ service.title }}</h3>
+              </a>
+              <p>{{ service.details |truncatewords:20 }}</p>
+            </div>
+          </div><!-- End Service Item -->
+          {% endfor %}
+        </div>
+      </div>
+    </section><!-- /Services Section -->
+    <section>
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Choose your amount here:</p>
+              <button class="btn btn-outline-success">10$</button>
+              <button class="btn btn-outline-success">30$</button>
+              <button class="btn btn-outline-success">50$</button>
+              <button class="btn btn-outline-success">70$</button>
+              <button class="btn btn-outline-success">100$</button>
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Fullname:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
+          </div>
+         </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
+{% endblock %}

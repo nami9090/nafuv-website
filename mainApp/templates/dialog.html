@@ -1,0 +1,63 @@
+{% extends 'master.html' %}
+{% block title %}
+  Fuliru, Vira, Viruel Museum | Donate
+{% endblock %}
+{% block content %}
+<body class="index-page">
+  <main class="main">
+    <div class="page-title" data-aos="fade">
+      <div class="heading">
+        <div class="container">
+          <div class="row d-flex justify-content-center text-center">
+            <div class="col-lg-8">
+              {% comment %} {% for gal in gallery %}
+                {% if forloop.first %}<h1>{{ gal.title }} Gallery</h1>{% endif %}
+                <p class="mb-0">{{ gal.description |truncatewords:10 }}</p>
+              {% endfor %} {% endcomment %}
+              <h1>Faire un don</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <nav class="breadcrumbs">
+        <div class="container">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li class="current">Gallery Single</li>
+          </ol>
+        </div>
+      </nav>
+    </div><!-- End Page Title -->
+    <div class="container">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
+            </div>
+            <div class="modal-body">
+              <p>Choose your amount here:</p>
+              <button class="btn btn-outline-success">10$</button>
+              <button class="btn btn-outline-success">30$</button>
+              <button class="btn btn-outline-success">50$</button>
+              <button class="btn btn-outline-success">70$</button>
+              <button class="btn btn-outline-success">100$</button>
+              <form>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Fullname:</label>
+                  <input type="text" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="recipient-name" class="col-form-label">Email:</label>
+                  <input type="email" class="form-control" id="recipient-name">
+                </div>
+                <div class="mb-3">
+                  <label for="message-text" class="col-form-label">Message:</label>
+                  <textarea class="form-control" id="message-text"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
+            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
+          </div>
+  </main>
+</body>
+{% endblock %}
