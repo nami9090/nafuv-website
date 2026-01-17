@@ -6,7 +6,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: chekout repository
       - uses: actions/checkout@v4
+
+      - name: Debug project structure
+        run: |
+          pwd
+          ls -la
       # Here is the deployment action
       - name: Upload from public_html via FTP
         uses: airvzxf/ftp-deployment-action@latest
@@ -14,4 +20,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           user: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: "./public_html/nafuv-website"
+
+          local_dir: ./
+          remote_dir: "/public_html/nafuv-website/"
+
+          delete: false
