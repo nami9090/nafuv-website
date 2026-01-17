@@ -12,7 +12,7 @@ class GaleriAdmin(admin.ModelAdmin):
 	list_display = ("title", "subtile", "description")
 
 class GalleryImageAdmin(admin.ModelAdmin):
-	list_display = ("gallery", "title", "description")
+	list_display = ("gallery", "title", "slug")
 
 admin.site.register(homeSilde)
 admin.site.register(whoWeareHome)

@@ -61,9 +61,9 @@ def gallery(request):
     }
     return HttpResponse(template.render(context, request))
 
-def gallery_single(request, pk):
+def gallery_single(request, id):
     template = loader.get_template('gallery-single.html')
-    getGallery = get_object_or_404(Galleries, title=pk)
+    getGallery = Galleries.objects.get(id=id)
     gallery = getGallery.images.all()
     context = {
         'singleGallery':getGallery,

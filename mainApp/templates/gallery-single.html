@@ -78,7 +78,7 @@
                 {% for gal in gallery %}
                 <div class="col-lg-4 mt-2">
                   <div class="card" style="width: 18rem;">
-                    <img src="{{ gal.image.url }}" class="card-img-top" alt="{{ gal.title }}">
+                    <img src="{{ gal.image.url }}" class="card-img-top" alt="{{ gal.title }}" height="250px">
                     <div class="card-body">
                       <h5 class="card-title">{{ gal.title }}</h5>
                       <p class="card-text">{{ gal.description |truncatewords:20 }}</p>

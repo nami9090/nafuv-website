@@ -66,8 +66,10 @@ class GalleryImages(models.Model):
     title = models.CharField(max_length=100)
     image = models.ImageField(upload_to='images/')
     description = models.CharField(max_length=10000)
-    def __str__(self):
-        return f"Image de {self.gallery.title}"
+    slug = models.SlugField(default="", null=False)
+    
+    # def __str__(self):
+    #     return f"Image de {self.gallery.title}"
     
 class agentsModel(models.Model):
     name = models.CharField(max_length=100)
