@@ -1,32 +1,17 @@
-name: CI -> Deploy Django Website (SFTP)
-
+name: CI -> Deploy to My website
 on:
   push:
-    branches:
-      - main
-
+    branches: [ main, development ]
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Debug project structure
-        run: |
-          pwd
-          ls -la
-
-      - name: Deploy Django project via SFTP (SSH)
-        uses: appleboy/scp-action@v0.1.7
+      - uses: actions/checkout@v4
+      # Here is the deployment action
+      - name: Upload from public_html via FTP
+        uses: airvzxf/ftp-deployment-action@latest
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          port: 22
-
-          source: "."
-          target: "/home/${{ secrets.SSH_USER }}/public_html/nafuv-website"
-
-          rm: false
+          server: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: "./public_html/nafuv-website"
