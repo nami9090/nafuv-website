@@ -12,6 +12,9 @@ jobs:
         run: |
           pwd
           ls -la
+      - name: Clean project before FTP
+        run: |
+          rm -rf .git .github venv __pycache__ env .env node_modules
       # Here is the deployment action
       - name: Upload from public_html via FTP
         uses: airvzxf/ftp-deployment-action@latest
