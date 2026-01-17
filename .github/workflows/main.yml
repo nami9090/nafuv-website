@@ -24,3 +24,13 @@ jobs:
           remote_dir: "/public_html/nafuv-website/"
 
           delete: false
+
+          exclude: |
+            **/.git*
+            **/.github/**
+            **/__pycache__/**
+            **/*.pyc
+            **/venv/**
+            **/productionfiles/**
+            **/env/**
+            **/.env

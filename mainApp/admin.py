@@ -8,6 +8,12 @@ class ServiceAdmin(admin.ModelAdmin):
 class AgentAdmin(admin.ModelAdmin):
 	list_display = ("name", "role", "image_pic")
 
+class GaleriAdmin(admin.ModelAdmin):
+	list_display = ("title", "subtile", "description")
+
+class GalleryImageAdmin(admin.ModelAdmin):
+	list_display = ("gallery", "title", "description")
+
 admin.site.register(homeSilde)
 admin.site.register(whoWeareHome)
 admin.site.register(whoWeareHomeimage)
@@ -17,5 +23,5 @@ admin.site.register(agentsModel, AgentAdmin)
 admin.site.register(address)
 admin.site.register(callUs)
 admin.site.register(emailUs)
-admin.site.register(Galleries)
-admin.site.register(GalleryImages)
+admin.site.register(Galleries, GaleriAdmin)
+admin.site.register(GalleryImages, GalleryImageAdmin)
