@@ -2,15 +2,16 @@ from django.shortcuts import render, get_object_or_404
 from .models import homeSilde, whoWeareHome, servicesModel, agentsModel, whoWeareHomeimage, Galleries, GalleryImages
 from django.template import loader
 from django.http import HttpResponse
+from random import choice
 
 # Create your views here.
 def index(request):
     template = loader.get_template('index.html')
     slideHome = homeSilde.objects.all()
-    whoWeare = whoWeareHome.objects.prefetch_related('images').all()
+    whoWeare = whoWeareHome.objects.prefetch_related('images')
     homeService = servicesModel.objects.all()
     teams = agentsModel.objects.all()
-    singleItem =whoWeareHomeimage.objects.all()
+    singleItem =whoWeareHomeimage.objects.all().order_by('?').first()
     context = {
         'slideHome':slideHome,
         'whoWeare':whoWeare,

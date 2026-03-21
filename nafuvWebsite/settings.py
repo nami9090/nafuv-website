@@ -25,13 +25,13 @@ SECRET_KEY = 'django-insecure-kn*k*dt5*!$o8-_h@xs(uuc=x9ms557(wwu%8d&21)z!u#vkfl
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# DEBUG = True
-DEBUG = False
+DEBUG = True
+# DEBUG = False
 
 ALLOWED_HOSTS = [
     # 'nami-industry-web-template-django.onrender.com'
-    'nafuv.org'
-    # '*'
+    # 'nafuv.org'
+    '*'
 ]
 
 
@@ -83,21 +83,21 @@ WSGI_APPLICATION = 'nafuvWebsite.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'nafuv_db',
-    #     'USER': 'nami',
-    #     'PASSWORD': 'nami@tess',
-    #     'HOST':'localhost'
-    # }
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'dttrabzf_musee_v',
-        'USER': 'dttrabzf_nami_user',
-        'PASSWORD': '123soleil@2025',
-        'HOST':'localhost',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'nafuv_db',
+        'USER': 'nami',
+        'PASSWORD': 'nami@tess',
+        'HOST':'localhost'
     }
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'dttrabzf_musee_v',
+    #     'USER': 'dttrabzf_nami_user',
+    #     'PASSWORD': '123soleil@2025',
+    #     'HOST':'localhost',
+    #     'PORT': '3306',
+    # }
 }
 
 
@@ -135,16 +135,27 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+#version on local
 
-STATIC_ROOT = BASE_DIR / 'productionfiles'
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'productionfiles')
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'staticfiles'
+    os.path.join(BASE_DIR, 'staticfiles')
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+#version online on Cpanel
+
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/home/dttrabzf/public_html/static/'
+
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/home/dttrabzf/public_html/media/'
+
 
 
 
