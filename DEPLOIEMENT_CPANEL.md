@@ -1,42 +1,43 @@
 # NAFUV : déploiement automatique GitHub → cPanel
 
 ```
-git push (ton PC)  →  GitHub Actions : tests  →  SSH vers le cPanel  →  deploy/cpanel.sh
-                                                   (git pull, pip, migrate, collectstatic, redémarrage)
+git push (ton PC)
+   → GitHub Actions : tests
+   → si les tests passent : la version est copiée sur la branche « production »
+   → le serveur cPanel vérifie toutes les 5 minutes (tâche cron) et installe la nouvelle version
+     (git, pip, migrate, collectstatic, redémarrage)
 ```
-Si un test échoue, **rien n'est déployé** et le site en ligne reste intact.
+- Si un test échoue, la branche `production` ne change pas : **rien n'est déployé**.
+- GitHub ne se connecte jamais au serveur (l'hébergement n'accepte pas le SSH venant de l'extérieur) : c'est le serveur qui récupère la version validée, avec sa clé de lecture seule.
 
 ## Fichiers
 | Fichier | Rôle |
 |---|---|
-| `.github/workflows/deploy.yml` | Tests, puis déploiement à chaque push sur `main` (ou bouton « Run workflow ») |
-| `deploy/cpanel.sh` | Mise à jour sur le serveur (lancé par GitHub, ou à la main dans le Terminal) |
+| `.github/workflows/deploy.yml` | Tests, puis copie de la version testée sur la branche `production` |
+| `deploy/verifier.sh` | Lancé toutes les 5 minutes par la tâche cron : installe s'il y a du nouveau |
+| `deploy/cpanel.sh` | La mise à jour elle-même (peut aussi être lancée à la main) |
 | `passenger_wsgi.py` | Point d'entrée de l'application pour cPanel |
 
-## Ce qui reste sur le serveur et n'est jamais dans Git
-- `~/nafuv/.env` : les secrets (clé Django, base MySQL, Stripe, e-mail)
-- `~/.nafuv-deploy.conf` : le chemin de l'application et de son environnement Python
-- le dossier `media` : les images envoyées depuis le site
+## Sur le serveur, jamais dans Git
+- `~/nafuv_web/.env` : les secrets (clé Django, base MySQL, Stripe, e-mail)
+- `~/.nafuv-deploy.conf` : chemin de l'application, environnement Python, branche (`production`)
+- `~/public_html/media` et `~/public_html/static` : images et fichiers statiques
+- `~/nafuv-deploiement.log` : le journal des déploiements
 
-## Mise en place (une seule fois)
-1. **Serveur → GitHub** : clé de déploiement en lecture seule sur le dépôt, puis `git clone`.
-2. **Fichiers serveur** : `.env`, `~/.nafuv-deploy.conf`, images `media` récupérées de l'ancienne version.
-3. **Setup Python App** : dossier de l'application = le dossier cloné.
-4. **GitHub → serveur** : clé SSH autorisée sur le compte cPanel, et 4 secrets dans GitHub
-   (`CPANEL_HOST`, `CPANEL_PORT`, `CPANEL_USER`, `CPANEL_SSH_KEY`).
-5. Premier déploiement, puis vérification du site.
-
-## Ensuite, au quotidien
+## Au quotidien
 ```bash
 git add -A
 git commit -m "Ce que j'ai changé"
 git push
 ```
-Suivre le déploiement : GitHub → onglet **Actions**.
-Déployer à la main en cas de besoin : `bash ~/nafuv/deploy/cpanel.sh` dans le Terminal cPanel.
+- Les tests sont visibles dans GitHub → onglet **Actions**.
+- Le site est à jour au plus tard 5 minutes après la coche verte.
+- Journal des déploiements : `tail -n 40 ~/nafuv-deploiement.log`
+- Déployer tout de suite, sans attendre : `bash ~/nafuv_web/deploy/cpanel.sh`
 
 ## En cas de problème
-- **Les tests échouent** : l'onglet Actions montre le test en cause. Le site n'a pas été modifié.
-- **Le déploiement échoue** : l'onglet Actions affiche le message de `deploy/cpanel.sh`.
-- **Le site affiche une erreur** : dans cPanel, Setup Python App → ouvrir le fichier de log indiqué, ou lancer `python manage.py check` dans le Terminal (environnement activé).
+- **Les tests échouent** : l'onglet Actions montre le test en cause. Le site n'a pas changé.
+- **Le site ne se met pas à jour** : `tail -n 40 ~/nafuv-deploiement.log`
+- **Le site affiche une erreur** : `tail -n 30 ~/nafuv_web/stderr.log`
 - **Revenir à la version précédente** : sur ton PC, `git revert HEAD` puis `git push`.
+- **Restaurer les sauvegardes** : `~/sauvegarde_nafuv_web_AAAAMMJJ.tar.gz` (fichiers) et `~/sauvegarde_nafuv_AAAAMMJJ.sql` (base).

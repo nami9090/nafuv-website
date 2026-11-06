@@ -1,24 +1,26 @@
 # =============================================================================
-# NAFUV: tests, then automatic deployment to the cPanel hosting.
+# NAFUV: tests, then validation for deployment.
 #
-#   git push on "main"  ->  tests  ->  (if they pass) update of nafuv.org
+#   git push on "main" -> tests -> (if they pass) the commit is copied to the
+#   "production" branch -> the cPanel server sees it within 5 minutes and
+#   updates itself (deploy/verifier.sh, launched by a cron job).
 #
-# GitHub secrets required (Settings > Secrets and variables > Actions):
-#   CPANEL_HOST      e.g. nafuv.org or the server name given by the host
-#   CPANEL_PORT      SSH port (22, or the one given by the host)
-#   CPANEL_USER      cPanel username
-#   CPANEL_SSH_KEY   private SSH key authorised on the cPanel account
+# The hosting does not accept SSH connections from GitHub: it is the server
+# that fetches the validated version, GitHub never connects to it.
 # =============================================================================
 name: Tests and deployment
 
 on:
   push:
     branches: [main]
-  workflow_dispatch:   # "Run workflow" button to deploy by hand
+  workflow_dispatch:   # "Run workflow" button
 
 concurrency:
   group: deploiement-nafuv
   cancel-in-progress: false
+
+permissions:
+  contents: write      # needed to update the "production" branch
 
 jobs:
   tests:
@@ -46,33 +48,17 @@ jobs:
       - name: Run the tests
         run: python manage.py test mainApp tableau
 
-  deploy:
-    name: Deploy to cPanel
+  valider:
+    name: Validate for production
     needs: tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    environment: production
     steps:
-      - name: Prepare the SSH key
-        env:
-          CLE: ${{ secrets.CPANEL_SSH_KEY }}
-          HOTE: ${{ secrets.CPANEL_HOST }}
-          PORT: ${{ secrets.CPANEL_PORT }}
-        run: |
-          mkdir -p ~/.ssh
-          printf '%s\n' "$CLE" > ~/.ssh/cle_cpanel
-          chmod 600 ~/.ssh/cle_cpanel
-          ssh-keyscan -p "${PORT:-22}" -H "$HOTE" >> ~/.ssh/known_hosts 2>/dev/null
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-      - name: Update the website
-        env:
-          HOTE: ${{ secrets.CPANEL_HOST }}
-          PORT: ${{ secrets.CPANEL_PORT }}
-          UTILISATEUR: ${{ secrets.CPANEL_USER }}
+      - name: Copy the tested version to the "production" branch
         run: |
-          ssh -i ~/.ssh/cle_cpanel -p "${PORT:-22}" -o BatchMode=yes "$UTILISATEUR@$HOTE" \
-            'bash -lc "source ~/.nafuv-deploy.conf && bash \"\$APP_DIR/deploy/cpanel.sh\""'
-
-      - name: Remove the key
-        if: always()
-        run: rm -f ~/.ssh/cle_cpanel
+          git push --force origin "HEAD:refs/heads/production"
+          echo "Version $(git rev-parse --short HEAD) validated: the server will install it within 5 minutes."

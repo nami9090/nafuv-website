@@ -1,14 +1,15 @@
 #!/usr/bin/env bash
 # =============================================================================
 # Updates NAFUV on the cPanel hosting from GitHub.
-# Launched automatically by GitHub Actions after every push on "main"
-# (.github/workflows/deploy.yml), or by hand in the cPanel Terminal:
-#     bash ~/nafuv/deploy/cpanel.sh
+# Launched automatically by deploy/verifier.sh (cron job, every 5 minutes)
+# when a new validated version is on the "production" branch, or by hand in
+# the cPanel Terminal:
+#     bash ~/nafuv_web/deploy/cpanel.sh
 #
 # The server settings are read from ~/.nafuv-deploy.conf (never in Git):
-#     APP_DIR=/home/USER/nafuv
-#     VENV_ACTIVATE=/home/USER/virtualenv/nafuv/3.11/bin/activate
-#     BRANCH=main
+#     APP_DIR=/home/USER/nafuv_web
+#     VENV_ACTIVATE=/home/USER/virtualenv/nafuv_web/3.11/bin/activate
+#     BRANCH=production
 # =============================================================================
 set -euo pipefail
 
@@ -19,7 +20,7 @@ if [ ! -f "$CONF" ]; then
 fi
 # shellcheck disable=SC1090
 source "$CONF"
-BRANCH="${BRANCH:-main}"
+BRANCH="${BRANCH:-production}"
 
 cd "$APP_DIR"
 echo "==> $(date '+%Y-%m-%d %H:%M:%S') · deploying $BRANCH in $APP_DIR"
