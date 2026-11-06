@@ -1,0 +1,41 @@
+{% load static i18n %}{% get_current_language as LANGUE %}<!DOCTYPE html>
+<html lang="{{ LANGUE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% translate "Log in" %} · NAFUV</title>
+  <link rel="icon" href="{% static 'assets/img/favicon.png' %}">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tableau/tableau.css' %}">
+</head>
+<body class="page-connexion">
+  <div class="connexion-visuel" aria-hidden="true">
+    <div>
+      <p class="connexion-surtitre">North America Fuliiru Vira Virtual Museum</p>
+      <h2>{% translate "Preserve, share and pass on the heritage of the Fuliiru and Vira peoples." %}</h2>
+    </div>
+  </div>
+  <main class="connexion-panneau">
+    <div class="connexion-boite">
+      <img src="{% static 'assets/img/museeLogo.png' %}" alt="NAFUV" width="64" height="64">
+      <h1>{% translate "Dashboard" %}</h1>
+      <p class="discret">{% translate "Log in to manage the museum's website." %}</p>
+      {% for m in messages %}<div class="notification {{ m.tags }}">{{ m }}</div>{% endfor %}
+      <form method="post" class="pile">
+        {% csrf_token %}
+        <div class="champ">
+          <label for="{{ form.identifiant.id_for_label }}">{{ form.identifiant.label }}</label>
+          {{ form.identifiant }}
+        </div>
+        <div class="champ">
+          <label for="{{ form.mot_de_passe.id_for_label }}">{{ form.mot_de_passe.label }}</label>
+          {{ form.mot_de_passe }}
+        </div>
+        <button type="submit" class="bouton bouton-principal bouton-large">{% translate "Log in" %}</button>
+      </form>
+      <a class="discret" href="/">← {% translate "Back to the website" %}</a>
+    </div>
+  </main>
+</body>
+</html>

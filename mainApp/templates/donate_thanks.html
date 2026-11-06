@@ -1,0 +1,25 @@
+{% extends "master.html" %}
+{% load i18n %}
+
+{% block title %}{% translate "Thank you" %}{% endblock %}
+{% block head %}<meta name="robots" content="noindex">{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="conteneur" style="max-width:720px;text-align:center">
+    <p class="surtitre" style="justify-content:center">{% translate "Thank you" %}</p>
+    {% if don and don.statut == "paid" %}
+      <h1>{% blocktranslate with nom=don.nom %}Thank you, {{ nom }}!{% endblocktranslate %}</h1>
+      <p class="chapo">{% blocktranslate with montant=don.montant %}Your donation of ${{ montant }} has been received. A confirmation e-mail is on its way.{% endblocktranslate %}</p>
+    {% else %}
+      <h1>{% translate "Thank you for your generosity!" %}</h1>
+      <p class="chapo">{% translate "Your payment is being confirmed. You will receive a confirmation e-mail in a few moments." %}</p>
+    {% endif %}
+    <p>{% translate "Together, we keep the heritage of the Fuliiru and Vira peoples alive for the next generations." %}</p>
+    <div class="hero-actions" style="justify-content:center">
+      <a class="btn btn-ocre" href="{% url 'gallery' %}">{% translate "Explore the collections" %}</a>
+      <a class="btn btn-contour" href="{% url 'index' %}">{% translate "Back to the home page" %}</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

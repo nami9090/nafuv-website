@@ -1,0 +1,131 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "Overview" %}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <p class="surtitre">{% now "l j F Y" %}</p>
+    <h1>{% blocktranslate with nom=user.first_name|default:user.get_username %}Hello, {{ nom }}{% endblocktranslate %}</h1>
+    <p class="discret">{% translate "Here is what is happening on the museum's website." %}</p>
+  </div>
+  <div class="actions-page">
+    <a class="bouton bouton-clair" href="{% url 'tableau:ajouter' 'galeries' %}">{% include "tableau/_icone.html" with nom="photos" %}{% translate "New collection" %}</a>
+    <a class="bouton bouton-principal" href="{% url 'tableau:ajouter' 'patrimoine' %}">{% include "tableau/_icone.html" with nom="plus" %}{% translate "New heritage page" %}</a>
+  </div>
+</div>
+
+<section class="indicateurs">
+  <a class="indicateur indicateur-accent" href="{% url 'tableau:dons' %}?statut=paid">
+    <span class="indicateur-icone">{% include "tableau/_icone.html" with nom="dons" %}</span>
+    <span class="indicateur-libelle">{% translate "Donations this year" %}</span>
+    <strong>${{ dons.annee|floatformat:2 }}</strong>
+    <span class="indicateur-detail">{% translate "This month" %} · ${{ dons.mois|floatformat:2 }}</span>
+  </a>
+  <a class="indicateur" href="{% url 'tableau:dons' %}?statut=paid">
+    <span class="indicateur-icone">{% include "tableau/_icone.html" with nom="check" %}</span>
+    <span class="indicateur-libelle">{% translate "Total received" %}</span>
+    <strong>${{ dons.total|floatformat:2 }}</strong>
+    <span class="indicateur-detail">{% blocktranslate count n=dons.nombre %}{{ n }} donation{% plural %}{{ n }} donations{% endblocktranslate %}</span>
+  </a>
+  <a class="indicateur {% if nb_messages %}indicateur-alerte{% endif %}" href="{% url 'tableau:messages' %}?vue=a_traiter">
+    <span class="indicateur-icone">{% include "tableau/_icone.html" with nom="messages" %}</span>
+    <span class="indicateur-libelle">{% translate "Messages to answer" %}</span>
+    <strong>{{ nb_messages }}</strong>
+    <span class="indicateur-detail">{% translate "From the contact form" %}</span>
+  </a>
+  <a class="indicateur" href="{% url 'tableau:liste' 'patrimoine' %}?filtre=royaumes">
+    <span class="indicateur-icone">{% include "tableau/_icone.html" with nom="couronne" %}</span>
+    <span class="indicateur-libelle">{% translate "Rulers documented" %}</span>
+    <strong>{{ nb_souverains }}</strong>
+    <span class="indicateur-detail">{% translate "In the royal lineages" %}</span>
+  </a>
+</section>
+
+<div class="grille-tableau">
+  <section class="carte carte-large">
+    <div class="carte-entete">
+      <div><h2>{% translate "Donations over the last 12 months" %}</h2><p class="discret">{% translate "Paid donations, in US dollars" %}</p></div>
+      <a class="lien" href="{% url 'tableau:dons' %}">{% translate "See all" %}</a>
+    </div>
+    <div class="graphique" role="img" aria-label="{% translate 'Donations over the last 12 months' %}">
+      {% for b in graphique %}
+        <div class="graphique-colonne" title="{{ b.mois|date:'F Y' }} · ${{ b.montant|floatformat:2 }}">
+          <span class="graphique-valeur">{% if b.montant %}${{ b.montant|floatformat:0 }}{% endif %}</span>
+          <span class="graphique-barre" style="height: {{ b.hauteur }}%"></span>
+          <span class="graphique-mois">{{ b.mois|date:"M" }}</span>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+
+  <section class="carte">
+    <div class="carte-entete"><h2>{% translate "Site status" %}</h2></div>
+    <ul class="etats">
+      {% for libelle, ok, detail in etat %}
+        <li class="{% if ok %}ok{% else %}attention{% endif %}"><span class="voyant"></span><div><strong>{{ libelle }}</strong><span>{{ detail }}</span></div></li>
+      {% endfor %}
+    </ul>
+    {% if dons.attente %}<p class="discret petit">{% blocktranslate count n=dons.attente %}{{ n }} payment started but not finished on Stripe.{% plural %}{{ n }} payments started but not finished on Stripe.{% endblocktranslate %}</p>{% endif %}
+  </section>
+
+  <section class="carte">
+    <div class="carte-entete"><h2>{% translate "Museum content" %}</h2></div>
+    <ul class="liste-contenus">
+      {% for c in contenus %}
+        <li>
+          <a href="{% url 'tableau:liste' c.section.code %}">
+            <span class="puce-icone">{% include "tableau/_icone.html" with nom=c.section.icone %}</span>
+            <span>{{ c.section.titre }}</span>
+            <strong>{{ c.nombre }}</strong>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section class="carte">
+    <div class="carte-entete"><div><h2>{% translate "Translations" %}</h2><p class="discret">{% translate "Share of content translated" %}</p></div></div>
+    {% if traductions %}
+      <ul class="progressions">
+        {% for t in traductions %}
+          <li>
+            <a href="{% url 'tableau:liste' t.section.code %}" class="progression-titre">{{ t.section.titre }}</a>
+            <div class="progression"><span>FR</span><div class="jauge"><i style="width: {{ t.fr }}%"></i></div><a href="{% url 'tableau:liste' t.section.code %}?manque=fr">{{ t.fr }}%</a></div>
+            <div class="progression"><span>SW</span><div class="jauge"><i style="width: {{ t.sw }}%"></i></div><a href="{% url 'tableau:liste' t.section.code %}?manque=sw">{{ t.sw }}%</a></div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="vide-petit">{% translate "No content yet." %}</p>
+    {% endif %}
+  </section>
+
+  <section class="carte">
+    <div class="carte-entete"><h2>{% translate "Latest donations" %}</h2><a class="lien" href="{% url 'tableau:dons' %}">{% translate "See all" %}</a></div>
+    {% if dons.derniers %}
+      <ul class="liste-simple">
+        {% for d in dons.derniers %}
+          <li><span class="avatar petit">{{ d.nom|slice:":1"|upper }}</span><div><strong>{% if d.anonyme %}{% translate "Anonymous" %}{% else %}{{ d.nom }}{% endif %}</strong><span>{{ d.paye_le|date:"j M Y" }}</span></div><b class="montant">${{ d.montant|floatformat:2 }}</b></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="vide-petit">{% translate "No donation received yet." %}</p>
+    {% endif %}
+  </section>
+
+  <section class="carte">
+    <div class="carte-entete"><h2>{% translate "Latest messages" %}</h2><a class="lien" href="{% url 'tableau:messages' %}">{% translate "See all" %}</a></div>
+    {% if derniers_messages %}
+      <ul class="liste-simple">
+        {% for m in derniers_messages %}
+          <li class="{% if not m.traite %}non-lu{% endif %}"><span class="avatar petit">{{ m.nom|slice:":1"|upper }}</span><a href="{% url 'tableau:message' m.pk %}"><strong>{{ m.sujet }}</strong><span>{{ m.nom }} · {{ m.recu_le|date:"j M, H:i" }}</span></a></li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="vide-petit">{% translate "No message yet." %}</p>
+    {% endif %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "Messages" %}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <p class="surtitre">{% translate "Community" %}</p>
+    <h1>{% translate "Messages" %}</h1>
+    <p class="discret">{% translate "Messages sent through the contact form of the website." %}</p>
+  </div>
+</div>
+
+<div class="carte carte-tableau">
+  <form class="filtres" method="get">
+    <div class="filtre-recherche">
+      {% include "tableau/_icone.html" with nom="recherche" %}
+      <input type="search" name="q" value="{{ q }}" placeholder="{% translate 'Name, e-mail, subject…' %}" aria-label="{% translate 'Search' %}">
+    </div>
+    <div class="segments">
+      <a href="{% querystring vue=None page=None %}" class="{% if not vue %}actif{% endif %}">{% translate "All" %}</a>
+      <a href="{% querystring vue='a_traiter' page=None %}" class="{% if vue == 'a_traiter' %}actif{% endif %}">{% translate "To handle" %}{% if nb_messages %} <b class="pastille">{{ nb_messages }}</b>{% endif %}</a>
+      <a href="{% querystring vue='traites' page=None %}" class="{% if vue == 'traites' %}actif{% endif %}">{% translate "Handled" %}</a>
+    </div>
+    {% if vue %}<input type="hidden" name="vue" value="{{ vue }}">{% endif %}
+  </form>
+
+  {% if page.object_list %}
+    <ul class="boite">
+      {% for m in page.object_list %}
+        <li class="{% if not m.traite %}non-lu{% endif %}">
+          <a href="{% url 'tableau:message' m.pk %}">
+            <span class="avatar">{{ m.nom|slice:":1"|upper }}</span>
+            <span class="boite-texte">
+              <span class="boite-ligne"><strong>{{ m.nom }}</strong><time>{{ m.recu_le|date:"j M Y, H:i" }}</time></span>
+              <span class="boite-sujet">{{ m.sujet }}</span>
+              <span class="boite-extrait">{{ m.message|truncatechars:140 }}</span>
+            </span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% include "tableau/_pagination.html" %}
+  {% else %}
+    <div class="vide">
+      {% include "tableau/_icone.html" with nom="messages" %}
+      <h3>{% translate "No message" %}</h3>
+      <p class="discret">{% translate "Messages from the contact form will appear here." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,237 +1,144 @@
-{% extends 'master.html' %}
-{% block title %}
-  Fuliru, Vira, Museum | home
-{% endblock %}
+{% extends "master.html" %}
+{% load i18n nafuv_tags %}
+
+{% block title %}{% translate "The virtual museum of the Fuliiru and Vira peoples" %}{% endblock %}
+{% block donnees_structurees %}{% jsonld_musee site %}{% endblock %}
+
 {% block content %}
-  <div class="index-page">
-    <main class="main">
-      <!-- Hero Section -->
-      <section id="hero" class="hero section dark-background">
-        <div id="hero-carousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-          {% for slide in slideHome %}
-            <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <img src="{{ slide.image_pic.url }}" class="d-block w-100" alt="">
-            <div class="carousel-container">
-              <div>
-                <p>{{ slide.span }}</p>
-                <h2>{{ slide.title }}</h2>
-                <p>{{ slide.details }}</p>
-              </div>
-            </div>
-          </div><!-- End Carousel Item -->
-          {% endfor %}
 
-          <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-          </a>
-
-          <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-            <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-          </a>
-
-          <ol class="carousel-indicators"></ol>
-
-        </div>
-
-      </section><!-- /Hero Section -->
-      <section> <!-- Donate Sction -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                <p>Choose your amount here:</p>
-                <button class="btn btn-outline-success">10$</button>
-                <button class="btn btn-outline-success">30$</button>
-                <button class="btn btn-outline-success">50$</button>
-                <button class="btn btn-outline-success">70$</button>
-                <button class="btn btn-outline-success">100$</button>
-                <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Fullname:</label>
-                    <input type="text" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Email:</label>
-                    <input type="email" class="form-control" id="recipient-name">
-                  </div>
-                  <div class="mb-3">
-                    <label for="message-text" class="col-form-label">Message:</label>
-                    <textarea class="form-control" id="message-text"></textarea>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-              {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
-              <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
-            </div>
-           </div>
-          </div>
-        </div>
-      </section> <!-- End Donate Sction -->
-
-      <!-- Section About -->
-      <section id="about" class="about section">
-        <!-- Section Title -->
-              <div class="container section-title" data-aos="fade-up">
-                <h2>Who we are</h2>
-              </div><!-- End Section Title -->
-        <div class="container">
-          <div class="row gy-4" data-aos="fade-up">
-            {% for whome in whoWeare %}
-            <div class="col-lg-6">
-              {% if singleItem %}
-                <img src="{{ singleItem.image.url}}" class="img-fluid">
-                <!-- <img src="{{ whome.images.first.image.url}}" class="img-fluid"> -->
-              {% endif %}
-            </div>
-            <div class="col-lg-6">
-              <p>{{ whome.first_paragraph }}</p>
-              <br>
-              <p>{{ whome.second_paragraph | truncatewords:20 }}</p>
-              <a href="about">
-                <button type="submit" class="btn btn-outline-success">View more</button>
-              </a>
-            </div>
-            {% endfor %}
-          </div>
-        </div>
-      </section>
-      <!-- Services Section -->
-      <section id="services" class="services section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Our Services</h2>
-          <p class="color-grey">The primary activities of the NAFV Into consists of a virtual museum and a physical cultural museum in Uvira in the Democratic Republic of the Congo. The virtual museum on the website virtually preserves culture of the Fuliiru and Vira peoples for the purpose of online education and research. Also the virtual museum is a source of experiment for young generations encouraged to put their hands on the plight during our yearly exhibition at the headquarter.</p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-          <div class="row gy-4">
-            {% for service in homeService %}
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="service-item  position-relative">
-                <img src="{{ service.image_pic.url }}" class="img-fluid">
-                <a href="service_details/{{service.slug}}" class="stretched-link">
-                  <h3>{{ service.title }}</h3>
-                </a>
-                <p>{{ service.details |truncatewords:20 }}</p>
-              </div>
-            </div><!-- End Service Item -->
-            {% endfor %}
-          </div>
-
-        </div>
-
-      </section><!-- /Services Section -->
-
-      <!-- Agents Section -->
-      <section id="agents" class="agents section">
-
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Our Teams</h2>
-          <p><></p>
-        </div><!-- End Section Title -->
-
-        <div class="container">
-
-          <div class="row gy-5">
-            {% for team in teams %}
-            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-              <div class="member">
-                <div class="pic"><img src="{{ team.image_pic.url }}" class="img-fluid" alt=""></div>
-                <div class="member-info">
-                  <h4>{{ team.name }}</h4>
-                  <span>{{ team.role }}</span>
-                  <div class="social">
-                    <a href="{{ team.lien_1 }}"><i class="bi bi-twitter-x"></i></a>
-                    <a href="{{ team.lien_2 }}"><i class="bi bi-facebook"></i></a>
-                    <a href="{{ team.lien_3 }}"><i class="bi bi-instagram"></i></a>
-                    <a href="{{ team.lien_4 }}"><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div><!-- End Team Member -->
-            {% endfor %}
-          </div>
-        </div>
-      </section><!-- /Agents Section -->
-      <!-- Contact Section -->
-      <section id="contact" class="contact section bg-light">
-        <!-- Section Title -->
-        <div class="container section-title" data-aos="fade-up">
-          <h2>Contact us</h2>
-          <p>Inspiring younger Benebuvira generation through the power of cultural artifacts. The NAFV museum thrives to enriche the Benebuvira community around the world by collecting, preserving, and making accessible outstanding works of art from the Fuliiru and Vira cultures.</p>
-        </div><!-- End Section Title -->
-        <div class="container" data-aos="fade-up" data-aos-delay="100">
-          <div class="row gy-4">
-            <div class="col-lg-4">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-                <i class="bi bi-geo-alt flex-shrink-0"></i>
-                <div>
-                  <h3>Address</h3>
-                  <p>NAFV Int. 2105 Megan Creek Dr Little Elm, TX 75068</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-                <i class="bi bi-telephone flex-shrink-0"></i>
-                <div>
-                  <h3>Call Us</h3>
-                  <p>+1 817 881 2876</p>
-                </div>
-              </div><!-- End Info Item -->
-
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-                <i class="bi bi-envelope flex-shrink-0"></i>
-                <div>
-                  <h3>Email Us</h3>
-                  <p>info@nafuv.org</p>
-                </div>
-              </div><!-- End Info Item -->
-
-            </div>
-
-            <div class="col-lg-8">
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                <div class="row gy-4">
-
-                  <div class="col-md-6">
-                    <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                  </div>
-
-                  <div class="col-md-6 ">
-                    <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                  </div>
-
-                  <div class="col-md-12">
-                    <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                  </div>
-
-                  <div class="col-md-12">
-                    <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                  </div>
-
-                  <div class="col-md-12 text-center">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your message has been sent. Thank you!</div>
-                    <span>
-                      
-                      <button type="submit" class="btn btn-outline-success">Send Message</button>
-                    </span>
-                  </div>
-                </div>
-              </form>
-            </div><!-- End Contact Form -->
-          </div>
-        </div>
-      </section><!-- /Contact Section -->
-    </main>
+<section class="hero" aria-label="{% translate 'Featured' %}">
+  {% for slide in slideHome %}
+    <div class="hero-diapo {% if forloop.first %}actif{% endif %}">
+      <img src="{{ slide.image_pic|url_image }}" alt="" {% if not forloop.first %}loading="lazy"{% endif %}>
+    </div>
+  {% endfor %}
+  <div class="conteneur hero-contenu">
+    {% with premier=slideHome.0 %}
+    <div class="hero-texte">
+      <p class="surtitre">{% if premier %}{{ premier|tr:"span" }}{% else %}{% translate "North America Fuliiru Vira Virtual Museum" %}{% endif %}</p>
+      <h1>{% if premier %}{{ premier|tr:"title" }}{% else %}{% translate "Our heritage, for every generation" %}{% endif %}</h1>
+      <p class="chapo">{% if premier %}{{ premier|tr:"details" }}{% else %}{{ site|tr:"slogan" }}{% endif %}</p>
+      <div class="hero-actions">
+        <a class="btn btn-ocre" href="{% url 'gallery' %}">{% translate "Explore the collections" %}</a>
+        <a class="btn btn-clair" href="{% url 'services' %}">{% translate "Discover the kingdoms" %}</a>
+      </div>
+    </div>
+    {% endwith %}
   </div>
+  {% if slideHome|length > 1 %}
+    <div class="hero-points">
+      {% for slide in slideHome %}<button type="button" aria-label="{% blocktranslate with n=forloop.counter %}Slide {{ n }}{% endblocktranslate %}" {% if forloop.first %}aria-current="true"{% endif %}></button>{% endfor %}
+    </div>
+  {% endif %}
+</section>
+
+{% if whoWeare %}
+<section class="section">
+  <div class="conteneur deux-colonnes">
+    <div class="cadre-image apparait">
+      {% if singleItem %}<img src="{{ singleItem.image|url_image }}" alt="{{ whoWeare|tr:'title' }}" loading="lazy">{% endif %}
+    </div>
+    <div class="apparait">
+      <p class="surtitre">{% translate "Who we are" %}</p>
+      <h2>{{ whoWeare|tr:"title" }}</h2>
+      <p class="chapo">{{ whoWeare|tr:"first_paragraph" }}</p>
+      <p>{{ whoWeare|tr:"second_paragraph"|resume:45 }}</p>
+      <a class="lien-fleche" href="{% url 'about' %}">{% translate "Our story and mission" %}</a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section section-sombre">
+  <div class="conteneur">
+    <div class="chiffres">
+      <div class="chiffre"><strong>{{ nb_royaumes }}</strong><span>{% translate "Ancestral kingdoms" %}</span></div>
+      <div class="chiffre"><strong>{{ nb_souverains }}</strong><span>{% translate "Rulers documented" %}</span></div>
+      <div class="chiffre"><strong>{{ nb_objets }}</strong><span>{% translate "Objects & photographs" %}</span></div>
+      <div class="chiffre"><strong>3</strong><span>{% translate "Languages" %}</span></div>
+    </div>
+  </div>
+</section>
+
+{% if homeService %}
+<section class="section">
+  <div class="conteneur">
+    <div class="entete-section">
+      <p class="surtitre">{% translate "Kingdoms & heritage" %}</p>
+      <h2>{% translate "Discover the land of Uvira" %}</h2>
+      <p class="chapo">{% translate "The ancestral kingdoms, their royal lineages and the programmes that keep the culture of the Fuliiru and Vira peoples alive." %}</p>
+    </div>
+    <div class="grille grille-3">
+      {% for service in homeService %}
+        <article class="carte apparait">
+          <div class="carte-image"><img src="{{ service.image_pic|url_image }}" alt="" loading="lazy"></div>
+          <div class="carte-corps">
+            {% if service.iskingdom %}<span class="etiquette">{% translate "Kingdom" %}</span>{% endif %}
+            <h3><a href="{{ service.get_absolute_url }}">{{ service|tr:"title" }}</a></h3>
+            <p>{{ service|tr:"details"|resume:22 }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="centre mt-2"><a class="btn btn-contour" href="{% url 'services' %}">{% translate "See all the heritage" %}</a></p>
+  </div>
+</section>
+{% endif %}
+
+{% if galleries %}
+<section class="section section-ivoire">
+  <div class="conteneur">
+    <div class="entete-section">
+      <p class="surtitre">{% translate "Collections" %}</p>
+      <h2>{% translate "Objects, photographs and memories" %}</h2>
+    </div>
+    <div class="grille grille-3">
+      {% for g in galleries %}
+        <article class="carte apparait">
+          <div class="carte-image"><img src="{{ g.image|url_image }}" alt="" loading="lazy"></div>
+          <div class="carte-corps">
+            <span class="etiquette">{{ g|tr:"subtile" }}</span>
+            <h3><a href="{{ g.get_absolute_url }}">{{ g|tr:"title" }}</a></h3>
+            <p>{{ g|tr:"description"|resume:18 }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="centre mt-2"><a class="btn btn-contour" href="{% url 'gallery' %}">{% translate "Browse all collections" %}</a></p>
+  </div>
+</section>
+{% endif %}
+
+{% if teams %}
+<section class="section">
+  <div class="conteneur">
+    <div class="entete-section centre">
+      <p class="surtitre">{% translate "Our team" %}</p>
+      <h2>{% translate "The people behind the museum" %}</h2>
+    </div>
+    <div class="grille grille-4">
+      {% for team in teams %}
+        <div class="membre apparait">
+          <img src="{{ team.image_pic|url_image }}" alt="{{ team.name }}" loading="lazy">
+          <h3>{{ team.name }}</h3>
+          <p>{{ team|tr:"role" }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section" style="padding-top:0">
+  <div class="conteneur">
+    <div class="appel">
+      <div>
+        <h2>{% translate "Help us preserve our heritage" %}</h2>
+        <p>{{ site|tr:"texte_dons" }}</p>
+      </div>
+      <a class="btn btn-ocre" href="{% url 'donate' %}">{% translate "Make a donation" %}</a>
+    </div>
+  </div>
+</section>
+
 {% endblock %}

@@ -1,0 +1,959 @@
+msgid ""
+msgstr ""
+"Language: sw\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+msgid "Page not found"
+msgstr "Ukurasa haupatikani"
+
+msgid "This page cannot be found"
+msgstr "Ukurasa huu haupatikani"
+
+msgid "It may have moved, or the address may be incorrect."
+msgstr "Huenda umehamishwa, au anwani si sahihi."
+
+msgid "Back to the home page"
+msgstr "Rudi ukurasa wa mwanzo"
+
+msgid "Explore the collections"
+msgstr "Gundua mikusanyiko"
+
+msgid "About the museum"
+msgstr "Kuhusu makumbusho"
+
+msgid "Breadcrumb"
+msgstr "Njia ya ukurasa"
+
+msgid "Home"
+msgstr "Mwanzo"
+
+msgid "About"
+msgstr "Kuhusu"
+
+msgid "Who we are"
+msgstr "Sisi ni nani"
+
+msgid "How we work"
+msgstr "Jinsi tunavyofanya kazi"
+
+msgid "Collect, protect, preserve, educate"
+msgstr "Kukusanya, kulinda, kuhifadhi, kuelimisha"
+
+msgid "Background"
+msgstr "Historia"
+
+msgid "Mission"
+msgstr "Dhamira"
+
+msgid "Activities"
+msgstr "Shughuli"
+
+msgid "Be part of the story"
+msgstr "Kuwa sehemu ya historia"
+
+msgid "Share an object, a photograph or a memory, volunteer, or support the museum with a donation."
+msgstr "Shiriki kitu, picha au kumbukumbu, jitolee, au unga mkono makumbusho kwa mchango."
+
+msgid "Donate"
+msgstr "Changia"
+
+msgid "Contact us"
+msgstr "Wasiliana nasi"
+
+msgid "Our team"
+msgstr "Timu yetu"
+
+msgid "Team"
+msgstr "Timu"
+
+msgid "The people behind the museum"
+msgstr "Watu walio nyuma ya makumbusho"
+
+msgid "Volunteers, elders, researchers and members of the community who collect and share our heritage."
+msgstr "Watu wa kujitolea, wazee, watafiti na wanajamii wanaokusanya na kushiriki urithi wetu."
+
+msgid "Content coming soon."
+msgstr "Maudhui yanakuja hivi karibuni."
+
+msgid "Contact"
+msgstr "Mawasiliano"
+
+msgid "Contact the NAFUV virtual museum: share an object or a memory, ask a question, or get involved."
+msgstr "Wasiliana na makumbusho ya mtandaoni ya NAFUV: shiriki kitu au kumbukumbu, uliza swali, au shiriki nasi."
+
+msgid "Let's talk"
+msgstr "Tuzungumze"
+
+msgid "A question, an object or a photograph to share, a wish to volunteer? Write to us."
+msgstr "Una swali, kitu au picha ya kushiriki, au unataka kujitolea? Tuandikie."
+
+msgid "Address"
+msgstr "Anwani"
+
+msgid "Phone"
+msgstr "Simu"
+
+msgid "E-mail"
+msgstr "Barua pepe"
+
+msgid "Opening hours"
+msgstr "Saa za kufungua"
+
+msgid "Send the message"
+msgstr "Tuma ujumbe"
+
+msgid "Make a donation"
+msgstr "Toa mchango"
+
+msgid "Support the museum"
+msgstr "Unga mkono makumbusho"
+
+msgid "Help us preserve our heritage"
+msgstr "Tusaidie kuhifadhi urithi wetu"
+
+msgid "Collect"
+msgstr "Kukusanya"
+
+msgid "Digitise objects, photographs and documents before they are lost."
+msgstr "Kuweka vitu, picha na nyaraka katika mfumo wa kidijitali kabla havijapotea."
+
+msgid "Record"
+msgstr "Kurekodi"
+
+msgid "Record the voices, proverbs and stories of our elders."
+msgstr "Kurekodi sauti, methali na hadithi za wazee wetu."
+
+msgid "Share"
+msgstr "Kushiriki"
+
+msgid "Support the cultural museum in Uvira and our yearly exhibition."
+msgstr "Kusaidia jumba la makumbusho la kitamaduni la Uvira na maonyesho yetu ya kila mwaka."
+
+msgid "Thank you to our recent donors"
+msgstr "Asante kwa wachangiaji wetu wa hivi karibuni"
+
+msgid "Choose an amount"
+msgstr "Chagua kiasi"
+
+msgid "Or another amount (USD)"
+msgstr "Au kiasi kingine (USD)"
+
+msgid "Continue to secure payment"
+msgstr "Endelea kwenye malipo salama"
+
+msgid "Secure card payment by Stripe. Your card details never reach our website."
+msgstr "Malipo salama ya kadi kupitia Stripe. Taarifa za kadi yako hazifiki kamwe kwenye tovuti yetu."
+
+msgid "Online donations are coming soon"
+msgstr "Michango ya mtandaoni inakuja hivi karibuni"
+
+msgid "In the meantime, please contact us to make a donation:"
+msgstr "Kwa sasa, tafadhali wasiliana nasi ili kutoa mchango:"
+
+msgid "Thank you"
+msgstr "Asante"
+
+msgid "Thank you for your generosity!"
+msgstr "Asante kwa ukarimu wako!"
+
+msgid "Your payment is being confirmed. You will receive a confirmation e-mail in a few moments."
+msgstr "Malipo yako yanathibitishwa. Utapokea barua pepe ya uthibitisho baada ya muda mfupi."
+
+msgid "Together, we keep the heritage of the Fuliiru and Vira peoples alive for the next generations."
+msgstr "Kwa pamoja, tunaweka hai urithi wa watu wa Fuliiru na Vira kwa vizazi vijavyo."
+
+msgid "Thank you, %(nom)s!"
+msgstr "Asante, %(nom)s!"
+
+msgid "Your donation of $%(montant)s has been received. A confirmation e-mail is on its way."
+msgstr "Mchango wako wa $%(montant)s umepokelewa. Barua pepe ya uthibitisho iko njiani."
+
+msgid "Collections"
+msgstr "Mikusanyiko"
+
+msgid "Continue exploring"
+msgstr "Endelea kugundua"
+
+msgid "Other collections"
+msgstr "Mikusanyiko mingine"
+
+msgid "Image viewer"
+msgstr "Kitazamaji picha"
+
+msgid "Close"
+msgstr "Funga"
+
+msgid "Previous"
+msgstr "Iliyotangulia"
+
+msgid "Next"
+msgstr "Inayofuata"
+
+msgid "Enlarge: %(titre)s"
+msgstr "Kuza: %(titre)s"
+
+msgid "Objects, photographs and memories of the Fuliiru and Vira peoples, preserved by the NAFUV virtual museum."
+msgstr "Vitu, picha na kumbukumbu za watu wa Fuliiru na Vira, vilivyohifadhiwa na makumbusho ya mtandaoni ya NAFUV."
+
+msgid "Objects, photographs and memories"
+msgstr "Vitu, picha na kumbukumbu"
+
+msgid "Each collection gathers artifacts, images and stories inherited from our ancestors."
+msgstr "Kila mkusanyiko unaleta pamoja vitu, picha na hadithi tulizorithi kutoka kwa mababu zetu."
+
+msgid "%(n)s item"
+msgid_plural "%(n)s items"
+msgstr[0] "kitu %(n)s"
+msgstr[1] "vitu %(n)s"
+
+msgid "The virtual museum of the Fuliiru and Vira peoples"
+msgstr "Makumbusho ya mtandaoni ya watu wa Fuliiru na Vira"
+
+msgid "Featured"
+msgstr "Vilivyoangaziwa"
+
+msgid "North America Fuliiru Vira Virtual Museum"
+msgstr "Makumbusho ya Mtandaoni ya Fuliiru Vira Amerika Kaskazini"
+
+msgid "Our heritage, for every generation"
+msgstr "Urithi wetu, kwa kila kizazi"
+
+msgid "Discover the kingdoms"
+msgstr "Gundua falme"
+
+msgid "Our story and mission"
+msgstr "Historia na dhamira yetu"
+
+msgid "Ancestral kingdoms"
+msgstr "Falme za jadi"
+
+msgid "Rulers documented"
+msgstr "Watawala walioorodheshwa"
+
+msgid "Objects & photographs"
+msgstr "Vitu na picha"
+
+msgid "Languages"
+msgstr "Lugha"
+
+msgid "Kingdoms & heritage"
+msgstr "Falme na urithi"
+
+msgid "Discover the land of Uvira"
+msgstr "Gundua nchi ya Uvira"
+
+msgid "The ancestral kingdoms, their royal lineages and the programmes that keep the culture of the Fuliiru and Vira peoples alive."
+msgstr "Falme za jadi, koo zao za kifalme na programu zinazoweka hai utamaduni wa watu wa Fuliiru na Vira."
+
+msgid "Kingdom"
+msgstr "Ufalme"
+
+msgid "See all the heritage"
+msgstr "Tazama urithi wote"
+
+msgid "Browse all collections"
+msgstr "Vinjari mikusanyiko yote"
+
+msgid "Slide %(n)s"
+msgstr "Picha %(n)s"
+
+msgid "The virtual museum of the Fuliiru and Vira peoples: kingdoms, royal lineages, objects, photographs and living heritage from Uvira, DR Congo."
+msgstr "Makumbusho ya mtandaoni ya watu wa Fuliiru na Vira: falme, koo za kifalme, vitu, picha na urithi hai kutoka Uvira, DR Kongo."
+
+msgid "Skip to content"
+msgstr "Ruka hadi kwenye maudhui"
+
+msgid "home"
+msgstr "mwanzo"
+
+msgid "Virtual Museum"
+msgstr "Makumbusho ya mtandaoni"
+
+msgid "Menu"
+msgstr "Menyu"
+
+msgid "Main navigation"
+msgstr "Urambazaji mkuu"
+
+msgid "Heritage"
+msgstr "Urithi"
+
+msgid "Language"
+msgstr "Lugha"
+
+msgid "Explore"
+msgstr "Gundua"
+
+msgid "Visit & contact"
+msgstr "Tembelea na wasiliana"
+
+msgid "Support us"
+msgstr "Tuunge mkono"
+
+msgid "Every gift helps preserve our heritage for the next generations."
+msgstr "Kila mchango unasaidia kuhifadhi urithi wetu kwa vizazi vijavyo."
+
+msgid "All rights reserved"
+msgstr "Haki zote zimehifadhiwa"
+
+msgid "Developed by"
+msgstr "Imetengenezwa na"
+
+msgid "Ancestral kingdom"
+msgstr "Ufalme wa jadi"
+
+msgid "Royal lineage"
+msgstr "Ukoo wa kifalme"
+
+msgid "rulers documented"
+msgstr "watawala walioorodheshwa"
+
+msgid "Current ruler:"
+msgstr "Mtawala wa sasa:"
+
+msgid "See the lineage"
+msgstr "Tazama ukoo"
+
+msgid "All the heritage"
+msgstr "Urithi wote"
+
+msgid "Reigning"
+msgstr "Anatawala sasa"
+
+msgid "More heritage"
+msgstr "Urithi zaidi"
+
+msgid "The rulers of %(royaume)s"
+msgstr "Watawala wa %(royaume)s"
+
+msgid "since %(debut)s"
+msgstr "tangu %(debut)s"
+
+msgid "%(annees)s year of reign"
+msgid_plural "%(annees)s years of reign"
+msgstr[0] "mwaka %(annees)s wa utawala"
+msgstr[1] "miaka %(annees)s ya utawala"
+
+msgid "The ancestral kingdoms of the Fuliiru and Vira peoples, their royal lineages and our cultural programmes."
+msgstr "Falme za jadi za watu wa Fuliiru na Vira, koo zao za kifalme na programu zetu za kitamaduni."
+
+msgid "The land of Uvira"
+msgstr "Nchi ya Uvira"
+
+msgid "Kingdoms and royal lineages"
+msgstr "Falme na koo za kifalme"
+
+msgid "What we do"
+msgstr "Tunachofanya"
+
+msgid "Programmes and activities"
+msgstr "Programu na shughuli"
+
+msgid "Pages"
+msgstr "Kurasa"
+
+msgid "Page %(n)s of %(total)s"
+msgstr "Ukurasa %(n)s kati ya %(total)s"
+
+msgid "Overview"
+msgstr "Muhtasari"
+
+msgid "Here is what is happening on the museum's website."
+msgstr "Haya ndiyo yanayoendelea kwenye tovuti ya makumbusho."
+
+msgid "New collection"
+msgstr "Mkusanyiko mpya"
+
+msgid "New heritage page"
+msgstr "Ukurasa mpya wa urithi"
+
+msgid "Donations this year"
+msgstr "Michango ya mwaka huu"
+
+msgid "This month"
+msgstr "Mwezi huu"
+
+msgid "Total received"
+msgstr "Jumla iliyopokelewa"
+
+msgid "Messages to answer"
+msgstr "Ujumbe wa kujibu"
+
+msgid "From the contact form"
+msgstr "Kutoka fomu ya mawasiliano"
+
+msgid "In the royal lineages"
+msgstr "Katika koo za kifalme"
+
+msgid "Donations over the last 12 months"
+msgstr "Michango ya miezi 12 iliyopita"
+
+msgid "Paid donations, in US dollars"
+msgstr "Michango iliyolipwa, kwa dola za Marekani"
+
+msgid "See all"
+msgstr "Tazama yote"
+
+msgid "Site status"
+msgstr "Hali ya tovuti"
+
+msgid "Museum content"
+msgstr "Maudhui ya makumbusho"
+
+msgid "Translations"
+msgstr "Tafsiri"
+
+msgid "Share of content translated"
+msgstr "Kiasi cha maudhui kilichotafsiriwa"
+
+msgid "No content yet."
+msgstr "Bado hakuna maudhui."
+
+msgid "Latest donations"
+msgstr "Michango ya karibuni"
+
+msgid "Anonymous"
+msgstr "Bila jina"
+
+msgid "No donation received yet."
+msgstr "Bado hakuna mchango uliopokelewa."
+
+msgid "Latest messages"
+msgstr "Ujumbe wa karibuni"
+
+msgid "No message yet."
+msgstr "Bado hakuna ujumbe."
+
+msgid "Hello, %(nom)s"
+msgstr "Habari, %(nom)s"
+
+msgid "%(n)s donation"
+msgid_plural "%(n)s donations"
+msgstr[0] "mchango %(n)s"
+msgstr[1] "michango %(n)s"
+
+msgid "%(n)s payment started but not finished on Stripe."
+msgid_plural "%(n)s payments started but not finished on Stripe."
+msgstr[0] "Malipo %(n)s yalianzishwa lakini hayakukamilika kwenye Stripe."
+msgstr[1] "Malipo %(n)s yalianzishwa lakini hayakukamilika kwenye Stripe."
+
+msgid "Dashboard"
+msgstr "Dashibodi"
+
+msgid "Dashboard navigation"
+msgstr "Urambazaji wa dashibodi"
+
+msgid "Community"
+msgstr "Jamii"
+
+msgid "Donations"
+msgstr "Michango"
+
+msgid "Messages"
+msgstr "Ujumbe"
+
+msgid "Settings"
+msgstr "Mipangilio"
+
+msgid "Site settings"
+msgstr "Mipangilio ya tovuti"
+
+msgid "My account"
+msgstr "Akaunti yangu"
+
+msgid "Advanced admin"
+msgstr "Utawala wa hali ya juu"
+
+msgid "View the website"
+msgstr "Tazama tovuti"
+
+msgid "Search the content, donations, messages…"
+msgstr "Tafuta maudhui, michango, ujumbe…"
+
+msgid "Search"
+msgstr "Tafuta"
+
+msgid "Website"
+msgstr "Tovuti"
+
+msgid "Log out"
+msgstr "Toka"
+
+msgid "Change my password"
+msgstr "Badilisha nenosiri langu"
+
+msgid "Change the password"
+msgstr "Badilisha nenosiri"
+
+msgid "Log in"
+msgstr "Ingia"
+
+msgid "Preserve, share and pass on the heritage of the Fuliiru and Vira peoples."
+msgstr "Kuhifadhi, kushiriki na kurithisha urithi wa watu wa Fuliiru na Vira."
+
+msgid "Log in to manage the museum's website."
+msgstr "Ingia ili kusimamia tovuti ya makumbusho."
+
+msgid "Back to the website"
+msgstr "Rudi kwenye tovuti"
+
+msgid "Online donations received through Stripe."
+msgstr "Michango ya mtandaoni iliyopokelewa kupitia Stripe."
+
+msgid "Export (Excel / CSV)"
+msgstr "Hamisha (Excel / CSV)"
+
+msgid "Name, e-mail, message…"
+msgstr "Jina, barua pepe, ujumbe…"
+
+msgid "All"
+msgstr "Zote"
+
+msgid "Paid"
+msgstr "Imelipwa"
+
+msgid "Pending"
+msgstr "Inasubiri"
+
+msgid "Abandoned"
+msgstr "Imeachwa"
+
+msgid "Total paid"
+msgstr "Jumla iliyolipwa"
+
+msgid "Donor"
+msgstr "Mchangiaji"
+
+msgid "Date"
+msgstr "Tarehe"
+
+msgid "Message"
+msgstr "Ujumbe"
+
+msgid "Status"
+msgstr "Hali"
+
+msgid "Amount"
+msgstr "Kiasi"
+
+msgid "anonymous"
+msgstr "bila jina"
+
+msgid "No donation"
+msgstr "Hakuna mchango"
+
+msgid "Donations made on the website will appear here."
+msgstr "Michango inayotolewa kwenye tovuti itaonekana hapa."
+
+msgid "Contact details, social networks and the texts of the About and Donate pages."
+msgstr "Mawasiliano, mitandao ya kijamii na maandishi ya kurasa za Kuhusu na Changia."
+
+msgid "View on the website"
+msgstr "Tazama kwenye tovuti"
+
+msgid "Save and keep editing"
+msgstr "Hifadhi na endelea kuhariri"
+
+msgid "Save"
+msgstr "Hifadhi"
+
+msgid "Content"
+msgstr "Maudhui"
+
+msgid "Organisation & social networks"
+msgstr "Shirika na mitandao ya kijamii"
+
+msgid "Details"
+msgstr "Maelezo"
+
+msgid "Add pictures"
+msgstr "Ongeza picha"
+
+msgid "Click or drop several pictures at once. They are added when you save."
+msgstr "Bofya au buruta picha kadhaa kwa pamoja. Zinaongezwa unapohifadhi."
+
+msgid "Remove"
+msgstr "Ondoa"
+
+msgid "Add a row"
+msgstr "Ongeza mstari"
+
+msgid "No picture yet"
+msgstr "Bado hakuna picha"
+
+msgid "JPEG, PNG or WebP. Pictures are turned the right way up, resized and compressed automatically."
+msgstr "JPEG, PNG au WebP. Picha zinanyooshwa, kupunguzwa ukubwa na kubanwa moja kwa moja."
+
+msgid "Options"
+msgstr "Chaguo"
+
+msgid "Delete"
+msgstr "Futa"
+
+msgid "New %(nom)s"
+msgstr "Mpya: %(nom)s"
+
+msgid "%(langue)s version. Leave a field empty to show the English text."
+msgstr "Toleo la %(langue)s. Acha sehemu wazi ili kuonyesha maandishi ya Kiingereza."
+
+msgid "Search…"
+msgstr "Tafuta…"
+
+msgid "All translations"
+msgstr "Tafsiri zote"
+
+msgid "French missing"
+msgstr "Kifaransa hakipo"
+
+msgid "Swahili missing"
+msgstr "Kiswahili hakipo"
+
+msgid "Order"
+msgstr "Mpangilio"
+
+msgid "Actions"
+msgstr "Vitendo"
+
+msgid "Translated"
+msgstr "Imetafsiriwa"
+
+msgid "Not translated"
+msgstr "Haijatafsiriwa"
+
+msgid "Edit"
+msgstr "Hariri"
+
+msgid "No result"
+msgstr "Hakuna matokeo"
+
+msgid "Nothing here yet"
+msgstr "Bado hakuna kitu hapa"
+
+msgid "Try another search or remove the filters."
+msgstr "Jaribu utafutaji mwingine au ondoa vichujio."
+
+msgid "Start by adding the first item."
+msgstr "Anza kwa kuongeza kipengele cha kwanza."
+
+msgid "Add"
+msgstr "Ongeza"
+
+msgid "Add a %(nom)s"
+msgstr "Ongeza: %(nom)s"
+
+msgid "Mark as to be handled"
+msgstr "Weka alama kuwa wa kushughulikia"
+
+msgid "Mark as handled"
+msgstr "Weka alama kuwa umeshughulikiwa"
+
+msgid "Reply by e-mail"
+msgstr "Jibu kwa barua pepe"
+
+msgid "Handled"
+msgstr "Yameshughulikiwa"
+
+msgid "To handle"
+msgstr "Ya kushughulikia"
+
+msgid "Messages sent through the contact form of the website."
+msgstr "Ujumbe uliotumwa kupitia fomu ya mawasiliano ya tovuti."
+
+msgid "Name, e-mail, subject…"
+msgstr "Jina, barua pepe, kichwa…"
+
+msgid "No message"
+msgstr "Hakuna ujumbe"
+
+msgid "Messages from the contact form will appear here."
+msgstr "Ujumbe kutoka fomu ya mawasiliano utaonekana hapa."
+
+msgid "Type at least two letters"
+msgstr "Andika angalau herufi mbili"
+
+msgid "%(n)s result for “%(q)s”"
+msgid_plural "%(n)s results for “%(q)s”"
+msgstr[0] "tokeo %(n)s la “%(q)s”"
+msgstr[1] "matokeo %(n)s ya “%(q)s”"
+
+msgid "This cannot be undone."
+msgstr "Hatua hii haiwezi kutenduliwa."
+
+msgid "Cancel"
+msgstr "Ghairi"
+
+msgid "Yes, delete"
+msgstr "Ndiyo, futa"
+
+msgid "Delete “%(nom)s”?"
+msgstr "Futa “%(nom)s”?"
+
+msgid "The linked items (%(elements)s) will be deleted too."
+msgstr "Vipengele vilivyounganishwa (%(elements)s) vitafutwa pia."
+
+msgid "Your name"
+msgstr "Jina lako"
+
+msgid "Your e-mail"
+msgstr "Barua pepe yako"
+
+msgid "Subject"
+msgstr "Kichwa"
+
+msgid "Amount (USD)"
+msgstr "Kiasi (USD)"
+
+msgid "Full name"
+msgstr "Jina kamili"
+
+msgid "E-mail (for your receipt)"
+msgstr "Barua pepe (kwa risiti yako)"
+
+msgid "Message (optional)"
+msgstr "Ujumbe (si lazima)"
+
+msgid "Keep my donation anonymous"
+msgstr "Mchango wangu ubaki bila jina"
+
+msgid "Please enter a valid amount."
+msgstr "Tafadhali weka kiasi sahihi."
+
+msgid "The minimum donation is $%(min)s."
+msgstr "Mchango wa chini ni $%(min)s."
+
+msgid "For donations above $%(max)s, please contact us directly."
+msgstr "Kwa michango zaidi ya $%(max)s, tafadhali wasiliana nasi moja kwa moja."
+
+msgid "Thank you! Your message has been sent. We will reply as soon as possible."
+msgstr "Asante! Ujumbe wako umetumwa. Tutakujibu haraka iwezekanavyo."
+
+msgid "Your donation was cancelled. No payment has been taken."
+msgstr "Mchango wako umesitishwa. Hakuna malipo yaliyochukuliwa."
+
+msgid "Online donations are not available yet. Please contact us."
+msgstr "Michango ya mtandaoni bado haipatikani. Tafadhali wasiliana nasi."
+
+msgid "The payment service is unavailable right now. Please try again in a few minutes."
+msgstr "Huduma ya malipo haipatikani kwa sasa. Tafadhali jaribu tena baada ya dakika chache."
+
+msgid "Donation to %(name)s"
+msgstr "Mchango kwa %(name)s"
+
+msgid "English"
+msgstr "Kiingereza"
+
+msgid "French"
+msgstr "Kifaransa"
+
+msgid "Swahili"
+msgstr "Kiswahili"
+
+msgid "Username or e-mail"
+msgstr "Jina la mtumiaji au barua pepe"
+
+msgid "Password"
+msgstr "Nenosiri"
+
+msgid "Picture"
+msgstr "Picha"
+
+msgid "Small text above the title"
+msgstr "Maandishi madogo juu ya kichwa"
+
+msgid "Title"
+msgstr "Kichwa"
+
+msgid "Text"
+msgstr "Maandishi"
+
+msgid "Display order"
+msgstr "Mpangilio wa kuonyesha"
+
+msgid "First paragraph"
+msgstr "Aya ya kwanza"
+
+msgid "Second paragraph"
+msgstr "Aya ya pili"
+
+msgid "Web address"
+msgstr "Anwani ya wavuti"
+
+msgid "This page is a kingdom (shows the royal lineage)"
+msgstr "Ukurasa huu ni ufalme (unaonyesha ukoo wa kifalme)"
+
+msgid "Subtitle"
+msgstr "Kichwa kidogo"
+
+msgid "Description"
+msgstr "Maelezo"
+
+msgid "Role"
+msgstr "Jukumu"
+
+msgid "X / Twitter link"
+msgstr "Kiungo cha X / Twitter"
+
+msgid "Facebook link"
+msgstr "Kiungo cha Facebook"
+
+msgid "Instagram link"
+msgstr "Kiungo cha Instagram"
+
+msgid "LinkedIn link"
+msgstr "Kiungo cha LinkedIn"
+
+msgid "Start of reign"
+msgstr "Mwanzo wa utawala"
+
+msgid "Still reigning"
+msgstr "Bado anatawala"
+
+msgid "End of reign"
+msgstr "Mwisho wa utawala"
+
+msgid "Organisation name"
+msgstr "Jina la shirika"
+
+msgid "Tagline"
+msgstr "Kauli mbiu"
+
+msgid "Public e-mail"
+msgstr "Barua pepe ya umma"
+
+msgid "About page: background"
+msgstr "Ukurasa wa Kuhusu: historia"
+
+msgid "About page: mission"
+msgstr "Ukurasa wa Kuhusu: dhamira"
+
+msgid "About page: activities"
+msgstr "Ukurasa wa Kuhusu: shughuli"
+
+msgid "Donate page: introduction"
+msgstr "Ukurasa wa Changia: utangulizi"
+
+msgid "Empty line = new paragraph · ## Heading · - list item · **bold**"
+msgstr "Mstari mtupu = aya mpya · ## Kichwa · - kipengele cha orodha · **herufi nzito**"
+
+msgid "Created automatically from the title if left empty."
+msgstr "Inaundwa moja kwa moja kutoka kwa kichwa ikiachwa wazi."
+
+msgid "Smaller numbers are shown first."
+msgstr "Namba ndogo zinaonyeshwa kwanza."
+
+msgid "Leave empty if the ruler is still reigning."
+msgstr "Acha wazi ikiwa mtawala bado anatawala."
+
+msgid "settings"
+msgstr "mipangilio"
+
+msgid "Home slides"
+msgstr "Picha za ukurasa wa mwanzo"
+
+msgid "slide"
+msgstr "picha"
+
+msgid "The large pictures at the top of the home page."
+msgstr "Picha kubwa juu ya ukurasa wa mwanzo."
+
+msgid "presentation text"
+msgstr "maandishi ya utangulizi"
+
+msgid "The presentation shown on the home page and the About page."
+msgstr "Utangulizi unaoonyeshwa kwenye ukurasa wa mwanzo na wa Kuhusu."
+
+msgid "heritage page"
+msgstr "ukurasa wa urithi"
+
+msgid "The ancestral kingdoms, their royal lineage, and the museum's programmes."
+msgstr "Falme za jadi, ukoo wao wa kifalme, na programu za makumbusho."
+
+msgid "collection"
+msgstr "mkusanyiko"
+
+msgid "Galleries of objects, photographs and memories."
+msgstr "Maonyesho ya vitu, picha na kumbukumbu."
+
+msgid "team member"
+msgstr "mwanatimu"
+
+msgid "The people behind the museum."
+msgstr "Watu walio nyuma ya makumbusho."
+
+msgid "Pictures"
+msgstr "Picha"
+
+msgid "Objects & photos"
+msgstr "Vitu na picha"
+
+msgid "Kingdoms"
+msgstr "Falme"
+
+msgid "Programmes"
+msgstr "Programu"
+
+msgid "You are logged out."
+msgstr "Umetoka."
+
+msgid "Saved."
+msgstr "Imehifadhiwa."
+
+msgid "Incorrect username or password, or this account has no access to the dashboard."
+msgstr "Jina la mtumiaji au nenosiri si sahihi, au akaunti hii haina ruhusa ya dashibodi."
+
+msgid "Online donations"
+msgstr "Michango ya mtandaoni"
+
+msgid "E-mails"
+msgstr "Barua pepe"
+
+msgid "Production mode"
+msgstr "Hali ya uzalishaji"
+
+msgid "Please correct the errors shown below."
+msgstr "Tafadhali sahihisha makosa yaliyoonyeshwa hapa chini."
+
+msgid "Your password has been changed."
+msgstr "Nenosiri lako limebadilishwa."
+
+msgid "Stripe keys missing in the .env file"
+msgstr "Funguo za Stripe hazipo kwenye faili .env"
+
+msgid "Sent for real"
+msgstr "Zinatumwa kweli"
+
+msgid "Not sent: configure SMTP in the .env file"
+msgstr "Hazitumwi: weka SMTP kwenye faili .env"
+
+msgid "DEBUG off"
+msgstr "DEBUG imezimwa"
+
+msgid "DEBUG is on"
+msgstr "DEBUG imewashwa"
+
+msgid "“%(nom)s” has been deleted."
+msgstr "“%(nom)s” imefutwa."
+
+msgid "Site settings saved."
+msgstr "Mipangilio ya tovuti imehifadhiwa."
+
+msgid "Marked as handled."
+msgstr "Umewekwa alama kuwa umeshughulikiwa."
+
+msgid "Marked as to be handled."
+msgstr "Umewekwa alama kuwa wa kushughulikia."
+
+msgid "Test mode: no real money is collected"
+msgstr "Hali ya majaribio: hakuna pesa halisi inayokusanywa"
+
+msgid "Active"
+msgstr "Inafanya kazi"
+
+msgid "%(n)s picture(s) added."
+msgstr "Picha %(n)s zimeongezwa."
+
+msgid "Donation"
+msgstr "Mchango"

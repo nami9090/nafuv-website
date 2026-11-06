@@ -1,0 +1,17 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "Delete" %}{% endblock %}
+
+{% block contenu %}
+<div class="confirmation carte">
+  <span class="confirmation-icone">{% include "tableau/_icone.html" with nom="supprimer" %}</span>
+  <h1>{% blocktranslate with nom=libelle %}Delete “{{ nom }}”?{% endblocktranslate %}</h1>
+  <p class="discret">{% translate "This cannot be undone." %}{% if section.sous_elements %} {% blocktranslate with elements=section.sous_elements.titre %}The linked items ({{ elements }}) will be deleted too.{% endblocktranslate %}{% endif %}</p>
+  <form method="post" class="actions-confirmation">
+    {% csrf_token %}
+    <a class="bouton bouton-clair" href="{% url 'tableau:modifier' section.code objet.pk %}">{% translate "Cancel" %}</a>
+    <button type="submit" class="bouton bouton-danger">{% translate "Yes, delete" %}</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+# =============================================================================
+# NAFUV: tests, then automatic deployment to the cPanel hosting.
+#
+#   git push on "main"  ->  tests  ->  (if they pass) update of nafuv.org
+#
+# GitHub secrets required (Settings > Secrets and variables > Actions):
+#   CPANEL_HOST      e.g. nafuv.org or the server name given by the host
+#   CPANEL_PORT      SSH port (22, or the one given by the host)
+#   CPANEL_USER      cPanel username
+#   CPANEL_SSH_KEY   private SSH key authorised on the cPanel account
+# =============================================================================
+name: Tests and deployment
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:   # "Run workflow" button to deploy by hand
+
+concurrency:
+  group: deploiement-nafuv
+  cancel-in-progress: false
+
+jobs:
+  tests:
+    name: Tests
+    runs-on: ubuntu-latest
+    env:
+      SECRET_KEY: tests-only
+      DEBUG: "False"
+      DB_ENGINE: sqlite
+      SECURE_SSL_REDIRECT: "False"
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install the dependencies
+        run: pip install -r requirements.txt
+
+      - name: Check for missing migrations
+        run: python manage.py makemigrations --check --dry-run
+
+      - name: Run the tests
+        run: python manage.py test mainApp tableau
+
+  deploy:
+    name: Deploy to cPanel
+    needs: tests
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    environment: production
+    steps:
+      - name: Prepare the SSH key
+        env:
+          CLE: ${{ secrets.CPANEL_SSH_KEY }}
+          HOTE: ${{ secrets.CPANEL_HOST }}
+          PORT: ${{ secrets.CPANEL_PORT }}
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "$CLE" > ~/.ssh/cle_cpanel
+          chmod 600 ~/.ssh/cle_cpanel
+          ssh-keyscan -p "${PORT:-22}" -H "$HOTE" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Update the website
+        env:
+          HOTE: ${{ secrets.CPANEL_HOST }}
+          PORT: ${{ secrets.CPANEL_PORT }}
+          UTILISATEUR: ${{ secrets.CPANEL_USER }}
+        run: |
+          ssh -i ~/.ssh/cle_cpanel -p "${PORT:-22}" -o BatchMode=yes "$UTILISATEUR@$HOTE" \
+            'bash -lc "source ~/.nafuv-deploy.conf && bash \"\$APP_DIR/deploy/cpanel.sh\""'
+
+      - name: Remove the key
+        if: always()
+        run: rm -f ~/.ssh/cle_cpanel

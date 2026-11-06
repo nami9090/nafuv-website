@@ -1,0 +1,85 @@
+{% extends "master.html" %}
+{% load i18n nafuv_tags %}
+
+{% block title %}{% translate "Make a donation" %}{% endblock %}
+{% block description %}{{ site|tr:"texte_dons"|resume:30 }}{% endblock %}
+{% block og_title %}{% translate "Help us preserve our heritage" %} · NAFUV{% endblock %}
+{% block og_description %}{{ site|tr:"texte_dons"|resume:30 }}{% endblock %}
+
+{% block content %}
+<header class="page-entete">
+  <div class="conteneur">
+    <nav class="fil" aria-label="{% translate 'Breadcrumb' %}"><a href="{% url 'index' %}">{% translate "Home" %}</a> / {% translate "Donate" %}</nav>
+    <p class="surtitre">{% translate "Support the museum" %}</p>
+    <h1>{% translate "Help us preserve our heritage" %}</h1>
+  </div>
+</header>
+
+<section class="section">
+  <div class="conteneur deux-colonnes" style="align-items:start">
+    <div>
+      <div class="texte-long">{{ site|tr:"texte_dons"|paragraphs }}</div>
+      <ul class="infos-contact mt-2">
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16v12H4z"/><path d="M8 7V5h8v2M9 12h6"/></svg></span>
+          <div><strong>{% translate "Collect" %}</strong>{% translate "Digitise objects, photographs and documents before they are lost." %}</div>
+        </li>
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0V7a4 4 0 0 1 4-4zM5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span>
+          <div><strong>{% translate "Record" %}</strong>{% translate "Record the voices, proverbs and stories of our elders." %}</div>
+        </li>
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 10 12 4l9 6M5 10v9h14v-9M10 19v-5h4v5"/></svg></span>
+          <div><strong>{% translate "Share" %}</strong>{% translate "Support the cultural museum in Uvira and our yearly exhibition." %}</div>
+        </li>
+      </ul>
+      {% if derniers_dons %}
+        <div class="mt-2">
+          <p class="surtitre">{% translate "Thank you to our recent donors" %}</p>
+          <p>{% for d in derniers_dons %}{{ d.nom }}{% if not forloop.last %} · {% endif %}{% endfor %}</p>
+        </div>
+      {% endif %}
+    </div>
+
+    <div class="panneau">
+      {% if dons_actifs %}
+        <form method="post" class="formulaire" novalidate>
+          {% csrf_token %}
+          <fieldset style="border:0;padding:0;margin:0">
+            <legend class="champ" style="padding:0"><label style="margin-bottom:.6rem">{% translate "Choose an amount" %}</label></legend>
+            <div class="montants">
+              {% for m in montants %}
+                <input type="radio" name="montant_choisi" id="montant-{{ m }}" value="{{ m }}" {% if form.montant.value|stringformat:"s" == m|stringformat:"s" %}checked{% endif %}>
+                <label for="montant-{{ m }}">${{ m }}</label>
+              {% endfor %}
+            </div>
+          </fieldset>
+          <div class="champ">
+            <label for="{{ form.montant.id_for_label }}">{% translate "Or another amount (USD)" %}</label>
+            <div class="montant-libre"><span>$</span>{{ form.montant }}</div>
+            {% for e in form.montant.errors %}<div class="erreur">{{ e }}</div>{% endfor %}
+          </div>
+          <div class="rangee">
+            {% include "_champ.html" with champ=form.nom %}
+            {% include "_champ.html" with champ=form.email %}
+          </div>
+          {% include "_champ.html" with champ=form.message %}
+          <label class="case">{{ form.anonyme }} {{ form.anonyme.label }}</label>
+          <button type="submit" class="btn btn-ocre" style="width:100%">{% translate "Continue to secure payment" %}</button>
+          <p class="securite">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+            {% translate "Secure card payment by Stripe. Your card details never reach our website." %}
+          </p>
+        </form>
+      {% else %}
+        <h2 style="font-size:1.8rem">{% translate "Online donations are coming soon" %}</h2>
+        <p>{% translate "In the meantime, please contact us to make a donation:" %}</p>
+        <ul class="infos-contact">
+          <li><span class="icone">✉</span><div><strong>{% translate "E-mail" %}</strong><a href="mailto:{{ site.email }}">{{ site.email }}</a></div></li>
+          <li><span class="icone">☎</span><div><strong>{% translate "Phone" %}</strong><a href="tel:{{ site.telephone|cut:' ' }}">{{ site.telephone }}</a></div></li>
+        </ul>
+      {% endif %}
+    </div>
+  </div>
+</section>
+{% endblock %}

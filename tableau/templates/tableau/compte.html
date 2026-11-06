@@ -1,0 +1,24 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "My account" %}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <p class="surtitre">{% translate "Settings" %}</p>
+    <h1>{% translate "My account" %}</h1>
+    <p class="discret">{{ user.get_full_name|default:user.get_username }}{% if user.email %} · {{ user.email }}{% endif %}</p>
+  </div>
+</div>
+<div class="edition">
+  <section class="carte edition-principal">
+    <div class="carte-entete"><h2>{% translate "Change my password" %}</h2></div>
+    <form method="post" class="pile" style="max-width:460px">
+      {% csrf_token %}
+      {% for champ in form %}{% include "tableau/_champ.html" %}{% endfor %}
+      <div><button type="submit" class="bouton bouton-principal">{% translate "Change the password" %}</button></div>
+    </form>
+  </section>
+</div>
+{% endblock %}

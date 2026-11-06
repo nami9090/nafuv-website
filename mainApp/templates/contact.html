@@ -1,147 +1,58 @@
-{% extends 'master.html' %}
-{% block title %}
-  Fuliru, Vira, Museum | Contact
-{% endblock %}
+{% extends "master.html" %}
+{% load i18n nafuv_tags %}
+
+{% block title %}{% translate "Contact" %}{% endblock %}
+{% block description %}{% translate "Contact the NAFUV virtual museum: share an object or a memory, ask a question, or get involved." %}{% endblock %}
+{% block og_title %}{% translate "Contact" %} · NAFUV{% endblock %}
+{% block og_description %}{% translate "Contact the NAFUV virtual museum: share an object or a memory, ask a question, or get involved." %}{% endblock %}
 
 {% block content %}
-<div class="contact-page">
-  <main class="main">
+<header class="page-entete">
+  <div class="conteneur">
+    <nav class="fil" aria-label="{% translate 'Breadcrumb' %}"><a href="{% url 'index' %}">{% translate "Home" %}</a> / {% translate "Contact" %}</nav>
+    <p class="surtitre">{% translate "Contact" %}</p>
+    <h1>{% translate "Let's talk" %}</h1>
+    <p class="chapo" style="max-width:720px">{% translate "A question, an object or a photograph to share, a wish to volunteer? Write to us." %}</p>
+  </div>
+</header>
 
-    <!-- Page Title -->
-    <div class="page-title" data-aos="fade">
-      <div class="heading">
-        <div class="container">
-          <div class="row d-flex justify-content-center text-center">
-            <div class="col-lg-8">
-              <h1>Contact</h1>
-              <p class="mb-0">Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
-            </div>
-          </div>
+<section class="section">
+  <div class="conteneur deux-colonnes" style="align-items:start">
+    <div>
+      <ul class="infos-contact">
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <div><strong>{% translate "Address" %}</strong>{{ site.adresse }}</div>
+        </li>
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg></span>
+          <div><strong>{% translate "Phone" %}</strong><a href="tel:{{ site.telephone|cut:' ' }}">{{ site.telephone }}</a></div>
+        </li>
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <div><strong>{% translate "E-mail" %}</strong><a href="mailto:{{ site.email }}">{{ site.email }}</a></div>
+        </li>
+        <li>
+          <span class="icone"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <div><strong>{% translate "Opening hours" %}</strong>{{ site|tr:"horaires" }}</div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panneau">
+      <form method="post" class="formulaire" novalidate>
+        {% csrf_token %}
+        {% if form.non_field_errors %}<div class="erreurs-form">{{ form.non_field_errors }}</div>{% endif %}
+        <div class="rangee">
+          {% include "_champ.html" with champ=form.nom %}
+          {% include "_champ.html" with champ=form.email %}
         </div>
-      </div>
-      <nav class="breadcrumbs">
-        <div class="container">
-          <ol>
-            <li><a href="/">Home</a></li>
-            <li class="current">Contact</li>
-          </ol>
-        </div>
-      </nav>
-    </div><!-- End Page Title -->
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
-          <iframe style="border:0; width: 100%; height: 270px;" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d48389.78314118045!2d-74.006138!3d40.710059!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a22a3bda30d%3A0xb89d1fe6bc499443!2sDowntown%20Conference%20Center!5e0!3m2!1sen!2sus!4v1676961268712!5m2!1sen!2sus" frameborder="0" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        </div><!-- End Google Maps -->
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4">
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
-              <i class="bi bi-geo-alt flex-shrink-0"></i>
-              <div>
-                <h3>Address</h3>
-                <p>NAFV Int. 2105 Megan Creek Dr Little Elm, TX 75068<p/>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
-              <i class="bi bi-telephone flex-shrink-0"></i>
-              <div>
-                <h3>Call Us</h3>
-                <p>+1 817 881 2876</p>
-              </div>
-            </div><!-- End Info Item -->
-
-            <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
-              <i class="bi bi-envelope flex-shrink-0"></i>
-              <div>
-                <h3>Email Us</h3>
-                <p>info@nafuv.org</p>
-              </div>
-            </div><!-- End Info Item -->
-
-          </div>
-
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Contact Section -->
-    <section>
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Donate here</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <p>Choose your amount here:</p>
-              <button class="btn btn-outline-success">10$</button>
-              <button class="btn btn-outline-success">30$</button>
-              <button class="btn btn-outline-success">50$</button>
-              <button class="btn btn-outline-success">70$</button>
-              <button class="btn btn-outline-success">100$</button>
-              <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Fullname:</label>
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-                <div class="mb-3">
-                  <label for="recipient-name" class="col-form-label">Email:</label>
-                  <input type="email" class="form-control" id="recipient-name">
-                </div>
-                <div class="mb-3">
-                  <label for="message-text" class="col-form-label">Message:</label>
-                  <textarea class="form-control" id="message-text"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-            {% comment %} <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> {% endcomment %}
-            <button type="button" class="btn btn-success" data-bs-dismiss="modal">Send message</button>
-          </div>
-         </div>
-        </div>
-      </div>
-    </section>
-  </main>
-</div>
+        {% include "_champ.html" with champ=form.sujet %}
+        {% include "_champ.html" with champ=form.message %}
+        <div class="piege" aria-hidden="true"><label for="{{ form.site_web.id_for_label }}">Website</label>{{ form.site_web }}</div>
+        <div><button type="submit" class="btn btn-ocre">{% translate "Send the message" %}</button></div>
+      </form>
+    </div>
+  </div>
+</section>
 {% endblock %}

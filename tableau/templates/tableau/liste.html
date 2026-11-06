@@ -1,0 +1,91 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{{ section.titre }}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <p class="surtitre">{% translate "Museum content" %}</p>
+    <h1>{{ section.titre }}</h1>
+    <p class="discret">{{ section.description }}</p>
+  </div>
+  <div class="actions-page">
+    <a class="bouton bouton-principal" href="{% url 'tableau:ajouter' section.code %}">{% include "tableau/_icone.html" with nom="plus" %}{% blocktranslate with nom=section.titre_singulier %}Add a {{ nom }}{% endblocktranslate %}</a>
+  </div>
+</div>
+
+<div class="carte carte-tableau">
+  <form class="filtres" method="get">
+    <div class="filtre-recherche">
+      {% include "tableau/_icone.html" with nom="recherche" %}
+      <input type="search" name="q" value="{{ q }}" placeholder="{% translate 'Search…' %}" aria-label="{% translate 'Search' %}">
+    </div>
+    {% if section.filtres %}
+      <div class="segments">
+        <a href="{% querystring filtre=None page=None %}" class="{% if not filtre_actif %}actif{% endif %}">{% translate "All" %}</a>
+        {% for code, libelle, conditions in section.filtres %}
+          <a href="{% querystring filtre=code page=None %}" class="{% if filtre_actif == code %}actif{% endif %}">{{ libelle }}</a>
+        {% endfor %}
+      </div>
+    {% endif %}
+    {% if section.traduits %}
+      <select name="manque" class="saisie saisie-compacte" onchange="this.form.submit()" aria-label="{% translate 'Translations' %}">
+        <option value="">{% translate "All translations" %}</option>
+        <option value="fr" {% if manque == "fr" %}selected{% endif %}>{% translate "French missing" %}</option>
+        <option value="sw" {% if manque == "sw" %}selected{% endif %}>{% translate "Swahili missing" %}</option>
+      </select>
+    {% endif %}
+    {% if filtre_actif %}<input type="hidden" name="filtre" value="{{ filtre_actif }}">{% endif %}
+    <span class="compteur">{% blocktranslate count n=total %}{{ n }} item{% plural %}{{ n }} items{% endblocktranslate %}</span>
+  </form>
+
+  {% if page.object_list %}
+    <div class="table-defilement">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>{% translate "Content" %}</th>
+            {% if section.sous_elements %}<th>{{ section.sous_elements.titre }}</th>{% endif %}
+            {% if section.traduits %}<th>{% translate "Languages" %}</th>{% endif %}
+            {% if page.object_list.0.ordre is not None %}<th class="centre">{% translate "Order" %}</th>{% endif %}
+            <th class="droite"><span class="visuellement-cache">{% translate "Actions" %}</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for l in page.object_list %}
+            <tr>
+              <td>
+                <a class="ligne-contenu" href="{% url 'tableau:modifier' section.code l.objet.pk %}">
+                  {% if section.image %}<span class="vignette">{% if l.image %}<img src="{{ l.image }}" alt="" loading="lazy">{% endif %}</span>{% endif %}
+                  <span><strong>{{ l.titre }}</strong>{% if l.sous_titre %}<small>{{ l.sous_titre }}</small>{% endif %}</span>
+                </a>
+              </td>
+              {% if section.sous_elements %}<td>{{ l.nb_sous }}</td>{% endif %}
+              {% if section.traduits %}
+                <td><span class="langues"><b class="ok">EN</b><b class="{% if l.traductions.fr %}ok{% else %}manque{% endif %}" title="{% if l.traductions.fr %}{% translate 'Translated' %}{% else %}{% translate 'Not translated' %}{% endif %}">FR</b><b class="{% if l.traductions.sw %}ok{% else %}manque{% endif %}" title="{% if l.traductions.sw %}{% translate 'Translated' %}{% else %}{% translate 'Not translated' %}{% endif %}">SW</b></span></td>
+              {% endif %}
+              {% if l.ordre is not None %}<td class="centre">{{ l.ordre }}</td>{% endif %}
+              <td class="droite">
+                <div class="actions-ligne">
+                  <a class="bouton-icone" href="{% url 'tableau:modifier' section.code l.objet.pk %}" title="{% translate 'Edit' %}" aria-label="{% translate 'Edit' %}">{% include "tableau/_icone.html" with nom="modifier" %}</a>
+                  {% if l.objet.get_absolute_url %}<a class="bouton-icone" href="{{ l.objet.get_absolute_url }}" target="_blank" rel="noopener" title="{% translate 'View on the website' %}" aria-label="{% translate 'View on the website' %}">{% include "tableau/_icone.html" with nom="externe" %}</a>{% endif %}
+                  <a class="bouton-icone danger" href="{% url 'tableau:supprimer' section.code l.objet.pk %}" title="{% translate 'Delete' %}" aria-label="{% translate 'Delete' %}">{% include "tableau/_icone.html" with nom="supprimer" %}</a>
+                </div>
+              </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% include "tableau/_pagination.html" %}
+  {% else %}
+    <div class="vide">
+      {% include "tableau/_icone.html" with nom=section.icone %}
+      <h3>{% if q or filtre_actif or manque %}{% translate "No result" %}{% else %}{% translate "Nothing here yet" %}{% endif %}</h3>
+      <p class="discret">{% if q or filtre_actif or manque %}{% translate "Try another search or remove the filters." %}{% else %}{% translate "Start by adding the first item." %}{% endif %}</p>
+      <a class="bouton bouton-principal" href="{% url 'tableau:ajouter' section.code %}">{% include "tableau/_icone.html" with nom="plus" %}{% translate "Add" %}</a>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

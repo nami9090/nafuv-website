@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /donate/thank-you
+Allow: /
+
+Sitemap: {{ SITE_URL }}/sitemap.xml

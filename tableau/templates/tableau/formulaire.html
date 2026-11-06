@@ -1,0 +1,142 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% if reglages %}{{ section.titre }}{% elif objet %}{{ section.titre_singulier|capfirst }} · {{ objet }}{% else %}{% blocktranslate with nom=section.titre_singulier %}New {{ nom }}{% endblocktranslate %}{% endif %}{% endblock %}
+
+{% block contenu %}
+<form method="post" enctype="multipart/form-data" class="formulaire-edition" novalidate>
+  {% csrf_token %}
+
+  <div class="entete-page">
+    <div>
+      {% if not reglages %}<a class="retour" href="{% url 'tableau:liste' section.code %}">{% include "tableau/_icone.html" with nom="retour" %}{{ section.titre }}</a>{% endif %}
+      <h1>
+        {% if reglages %}{{ section.titre }}
+        {% elif objet %}{{ objet }}
+        {% else %}{% blocktranslate with nom=section.titre_singulier %}New {{ nom }}{% endblocktranslate %}{% endif %}
+      </h1>
+      {% if reglages %}<p class="discret">{% translate "Contact details, social networks and the texts of the About and Donate pages." %}</p>{% endif %}
+    </div>
+    <div class="actions-page">
+      {% if voir_sur_site %}<a class="bouton bouton-clair" href="{{ voir_sur_site }}" target="_blank" rel="noopener">{% include "tableau/_icone.html" with nom="externe" %}{% translate "View on the website" %}</a>{% endif %}
+      {% if not reglages %}<button type="submit" name="enregistrer_continuer" value="1" class="bouton bouton-clair">{% translate "Save and keep editing" %}</button>{% endif %}
+      <button type="submit" class="bouton bouton-principal">{% include "tableau/_icone.html" with nom="check" %}{% translate "Save" %}</button>
+    </div>
+  </div>
+
+  {% if form.non_field_errors %}<div class="notification error">{{ form.non_field_errors }}</div>{% endif %}
+
+  <div class="edition">
+    <div class="edition-principal">
+
+      {% if groupes.langues %}
+      <section class="carte">
+        <div class="carte-entete">
+          <h2>{% translate "Content" %}</h2>
+          <div class="onglets" role="tablist">
+            {% for g in groupes.langues %}
+              <button type="button" role="tab" class="onglet {% if forloop.first %}actif{% endif %}" data-onglet="langue-{{ g.code }}" aria-selected="{% if forloop.first %}true{% else %}false{% endif %}">
+                {{ g.nom }}{% for c in g.champs %}{% if c.errors %}<i class="point-erreur"></i>{% endif %}{% endfor %}
+              </button>
+            {% endfor %}
+          </div>
+        </div>
+        {% for g in groupes.langues %}
+          <div class="panneau-onglet {% if forloop.first %}actif{% endif %}" id="langue-{{ g.code }}" role="tabpanel">
+            {% if g.code != "en" %}<p class="astuce">{% blocktranslate with langue=g.nom %}{{ langue }} version. Leave a field empty to show the English text.{% endblocktranslate %}</p>{% endif %}
+            <div class="pile">{% for champ in g.champs %}{% include "tableau/_champ.html" %}{% endfor %}</div>
+          </div>
+        {% endfor %}
+      </section>
+      {% endif %}
+
+      {% if groupes.generaux %}
+      <section class="carte">
+        <div class="carte-entete"><h2>{% if reglages %}{% translate "Organisation & social networks" %}{% else %}{% translate "Details" %}{% endif %}</h2></div>
+        <div class="grille-champs">{% for champ in groupes.generaux %}{% include "tableau/_champ.html" %}{% endfor %}</div>
+      </section>
+      {% endif %}
+
+      {% if sous %}
+      <section class="carte" id="sous-elements">
+        <div class="carte-entete">
+          <div><h2>{{ section.sous_elements.titre }}</h2><p class="discret">{% blocktranslate count n=lignes_sous|length %}{{ n }} item{% plural %}{{ n }} items{% endblocktranslate %}</p></div>
+        </div>
+        {{ sous.management_form }}
+        {% if sous.non_form_errors %}<div class="notification error">{{ sous.non_form_errors }}</div>{% endif %}
+
+        {% if section.sous_elements.ajout_multiple %}
+          <label class="depot">
+            {% include "tableau/_icone.html" with nom="photos" %}
+            <strong>{% translate "Add pictures" %}</strong>
+            <span>{% translate "Click or drop several pictures at once. They are added when you save." %}</span>
+            <input type="file" name="ajout_photos" accept="image/*" multiple data-depot>
+            <em class="depot-etat" data-depot-etat></em>
+          </label>
+        {% endif %}
+
+        <div class="sous-liste" data-sous-liste>
+          {% for l in lignes_sous %}
+            <div class="sous-carte {% if l.form.errors %}en-erreur{% endif %}">
+              {% for cache in l.form.hidden_fields %}{{ cache }}{% endfor %}
+              <div class="sous-image">
+                <span class="apercu-petit">{% if l.image %}<img src="{{ l.image }}" alt="">{% endif %}</span>
+                {% include "tableau/_champ.html" with champ=l.champ_image %}
+              </div>
+              <div class="sous-champs">{% for champ in l.autres %}{% include "tableau/_champ.html" %}{% endfor %}</div>
+              {% if l.form.instance.pk %}
+                <label class="option option-danger">{{ l.form.DELETE }}<span>{% translate "Remove" %}</span></label>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+
+        {% if not section.sous_elements.ajout_multiple %}
+          <template data-modele-sous>
+            <div class="sous-carte">
+              {% for cache in modele_sous.caches %}{{ cache }}{% endfor %}
+              <div class="sous-image">
+                <span class="apercu-petit"></span>
+                {% include "tableau/_champ.html" with champ=modele_sous.image %}
+              </div>
+              <div class="sous-champs">{% for champ in modele_sous.autres %}{% include "tableau/_champ.html" %}{% endfor %}</div>
+            </div>
+          </template>
+          <button type="button" class="bouton bouton-clair" data-ajouter-sous>{% include "tableau/_icone.html" with nom="plus" %}{% translate "Add a row" %}</button>
+        {% endif %}
+      </section>
+      {% endif %}
+    </div>
+
+    <aside class="edition-cote">
+      {% for champ in groupes.images %}
+      <section class="carte">
+        <div class="carte-entete"><h2>{{ champ.label }}</h2></div>
+        <div class="apercu {% if not apercu %}vide{% endif %}" data-apercu-cible="{{ champ.name }}">
+          {% if apercu %}<img src="{{ apercu }}" alt="">{% else %}<span>{% translate "No picture yet" %}</span>{% endif %}
+        </div>
+        <div class="champ {% if champ.errors %}en-erreur{% endif %}">
+          {{ champ }}
+          <p class="aide">{% translate "JPEG, PNG or WebP. Pictures are turned the right way up, resized and compressed automatically." %}</p>
+          {% for e in champ.errors %}<p class="erreur">{{ e }}</p>{% endfor %}
+        </div>
+      </section>
+      {% endfor %}
+
+      {% if groupes.options %}
+      <section class="carte">
+        <div class="carte-entete"><h2>{% translate "Options" %}</h2></div>
+        <div class="pile">{% for champ in groupes.options %}{% include "tableau/_champ.html" %}{% endfor %}</div>
+      </section>
+      {% endif %}
+
+      <section class="carte carte-actions">
+        <button type="submit" class="bouton bouton-principal bouton-large">{% include "tableau/_icone.html" with nom="check" %}{% translate "Save" %}</button>
+        {% if objet and not reglages %}
+          <a class="bouton bouton-danger bouton-large" href="{% url 'tableau:supprimer' section.code objet.pk %}">{% include "tableau/_icone.html" with nom="supprimer" %}{% translate "Delete" %}</a>
+        {% endif %}
+      </section>
+    </aside>
+  </div>
+</form>
+{% endblock %}

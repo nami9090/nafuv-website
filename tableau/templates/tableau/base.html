@@ -1,0 +1,79 @@
+{% load static i18n %}{% get_current_language as LANGUE %}<!DOCTYPE html>
+<html lang="{{ LANGUE }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>{% block titre %}{% translate "Dashboard" %}{% endblock %} · NAFUV</title>
+  <link rel="icon" href="{% static 'assets/img/favicon.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'tableau/tableau.css' %}">
+</head>
+<body>
+  {% with page_active=request.resolver_match.url_name code_actif=request.resolver_match.kwargs.code %}
+  <aside class="menu" id="menu">
+    <a class="menu-marque" href="{% url 'tableau:accueil' %}">
+      <img src="{% static 'assets/img/museeLogo.png' %}" alt="" width="36" height="36">
+      <span>NAFUV<small>{% translate "Dashboard" %}</small></span>
+    </a>
+
+    <nav class="menu-nav" aria-label="{% translate 'Dashboard navigation' %}">
+      <a class="menu-lien {% if page_active == 'accueil' %}actif{% endif %}" href="{% url 'tableau:accueil' %}">{% include "tableau/_icone.html" with nom="accueil" %}<span>{% translate "Overview" %}</span></a>
+
+      <p class="menu-groupe">{% translate "Museum content" %}</p>
+      {% for s in sections %}
+        <a class="menu-lien {% if code_actif == s.code %}actif{% endif %}" href="{% url 'tableau:liste' s.code %}">{% include "tableau/_icone.html" with nom=s.icone %}<span>{{ s.titre }}</span></a>
+      {% endfor %}
+
+      <p class="menu-groupe">{% translate "Community" %}</p>
+      <a class="menu-lien {% if page_active == 'dons' %}actif{% endif %}" href="{% url 'tableau:dons' %}">{% include "tableau/_icone.html" with nom="dons" %}<span>{% translate "Donations" %}</span></a>
+      <a class="menu-lien {% if page_active == 'messages' or page_active == 'message' %}actif{% endif %}" href="{% url 'tableau:messages' %}">{% include "tableau/_icone.html" with nom="messages" %}<span>{% translate "Messages" %}</span>{% if nb_messages %}<b class="pastille">{{ nb_messages }}</b>{% endif %}</a>
+
+      <p class="menu-groupe">{% translate "Settings" %}</p>
+      <a class="menu-lien {% if page_active == 'reglages' %}actif{% endif %}" href="{% url 'tableau:reglages' %}">{% include "tableau/_icone.html" with nom="reglages" %}<span>{% translate "Site settings" %}</span></a>
+      <a class="menu-lien {% if page_active == 'compte' %}actif{% endif %}" href="{% url 'tableau:compte' %}">{% include "tableau/_icone.html" with nom="compte" %}<span>{% translate "My account" %}</span></a>
+      {% if user.is_superuser %}
+        <a class="menu-lien" href="{% url 'admin:index' %}">{% include "tableau/_icone.html" with nom="admin" %}<span>{% translate "Advanced admin" %}</span></a>
+      {% endif %}
+    </nav>
+
+    <div class="menu-pied">
+      <a class="menu-lien" href="/" target="_blank" rel="noopener">{% include "tableau/_icone.html" with nom="externe" %}<span>{% translate "View the website" %}</span></a>
+    </div>
+  </aside>
+  <div class="voile" data-fermer-menu></div>
+
+  <div class="principal">
+    <header class="barre">
+      <button class="bouton-icone menu-ouvrir" type="button" aria-controls="menu" aria-label="{% translate 'Menu' %}">{% include "tableau/_icone.html" with nom="menu" %}</button>
+      <form class="recherche-globale" action="{% url 'tableau:recherche' %}" method="get" role="search">
+        {% include "tableau/_icone.html" with nom="recherche" %}
+        <input type="search" name="q" value="{{ q|default:'' }}" placeholder="{% translate 'Search the content, donations, messages…' %}" aria-label="{% translate 'Search' %}">
+      </form>
+      <div class="barre-droite">
+        <a class="bouton bouton-clair cache-mobile" href="/" target="_blank" rel="noopener">{% include "tableau/_icone.html" with nom="externe" %}{% translate "Website" %}</a>
+        <details class="profil">
+          <summary><span class="avatar">{{ user.get_username|slice:":1"|upper }}</span><span class="cache-mobile">{{ user.get_full_name|default:user.get_username }}</span></summary>
+          <div class="profil-menu">
+            <a href="{% url 'tableau:compte' %}">{% translate "My account" %}</a>
+            <form method="post" action="{% url 'tableau:deconnexion' %}">{% csrf_token %}<button type="submit">{% translate "Log out" %}</button></form>
+          </div>
+        </details>
+      </div>
+    </header>
+
+    <main class="contenu" id="contenu">
+      {% if messages %}
+        <div class="notifications" role="status">
+          {% for m in messages %}<div class="notification {{ m.tags }}">{{ m }}<button type="button" aria-label="{% translate 'Close' %}" data-fermer>×</button></div>{% endfor %}
+        </div>
+      {% endif %}
+      {% block contenu %}{% endblock %}
+    </main>
+  </div>
+  {% endwith %}
+  <script src="{% static 'tableau/tableau.js' %}" defer></script>
+</body>
+</html>

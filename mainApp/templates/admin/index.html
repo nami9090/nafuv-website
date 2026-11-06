@@ -1,0 +1,141 @@
+{% extends "admin/base_site.html" %}
+{% load i18n static nafuv_admin %}
+
+{% block extrastyle %}{{ block.super }}<link rel="stylesheet" href="{% static 'admin/css/dashboard.css' %}">{% endblock %}
+{% block coltype %}colM{% endblock %}
+{% block bodyclass %}{{ block.super }} dashboard nafuv-tableau{% endblock %}
+{% block nav-breadcrumbs %}{% endblock %}
+{% block nav-sidebar %}{% endblock %}
+
+{% block content %}
+{% tableau_de_bord as tb %}
+<div class="tb">
+
+  <section class="tb-entete">
+    <div>
+      <p class="tb-surtitre">{% now "l j F Y" %}</p>
+      <h1>Welcome{% if user.first_name %}, {{ user.first_name }}{% endif %}</h1>
+      <p class="tb-discret">Manage the content of the NAFUV virtual museum, follow the donations and answer the messages.</p>
+    </div>
+    <div class="tb-liens-site">
+      <a class="tb-bouton" href="/" target="_blank" rel="noopener">View the site ↗</a>
+      <a class="tb-bouton tb-bouton-clair" href="/fr/" target="_blank" rel="noopener">FR</a>
+      <a class="tb-bouton tb-bouton-clair" href="/sw/" target="_blank" rel="noopener">SW</a>
+    </div>
+  </section>
+
+  <section class="tb-chiffres">
+    <a class="tb-carte tb-carte-ocre" href="{{ tb.dons.url }}?statut__exact=paid">
+      <span class="tb-libelle">Donations {{ tb.dons.annee_courante }}</span>
+      <strong>${{ tb.dons.annee|floatformat:2 }}</strong>
+      <span class="tb-discret">This month: ${{ tb.dons.mois|floatformat:2 }}</span>
+    </a>
+    <a class="tb-carte" href="{{ tb.dons.url }}?statut__exact=paid">
+      <span class="tb-libelle">Total received</span>
+      <strong>${{ tb.dons.total|floatformat:2 }}</strong>
+      <span class="tb-discret">{{ tb.dons.nombre }} donation{{ tb.dons.nombre|pluralize }}</span>
+    </a>
+    <a class="tb-carte {% if tb.messages.non_traites %}tb-carte-alerte{% endif %}" href="{{ tb.messages.url }}?traite__exact=0">
+      <span class="tb-libelle">Messages to answer</span>
+      <strong>{{ tb.messages.non_traites }}</strong>
+      <span class="tb-discret">From the contact form</span>
+    </a>
+    <a class="tb-carte" href="{{ tb.dons.url }}?statut__exact=pending">
+      <span class="tb-libelle">Payments started</span>
+      <strong>{{ tb.dons.attente }}</strong>
+      <span class="tb-discret">Not finished on Stripe</span>
+    </a>
+  </section>
+
+  <div class="tb-grille">
+    <section class="tb-bloc">
+      <h2>Quick actions</h2>
+      <div class="tb-actions">
+        {% for libelle, url in tb.actions %}<a href="{{ url }}">＋ {{ libelle }}</a>{% endfor %}
+      </div>
+    </section>
+
+    <section class="tb-bloc">
+      <h2>Museum content</h2>
+      <ul class="tb-contenus">
+        {% for c in tb.contenus %}
+          <li><a href="{{ c.url }}"><span>{{ c.libelle }}</span><strong>{{ c.nombre }}</strong></a></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="tb-bloc">
+      <h2>Translations to complete</h2>
+      {% if tb.traductions %}
+        <table class="tb-table">
+          <thead><tr><th>Content</th><th>French</th><th>Swahili</th></tr></thead>
+          <tbody>
+            {% for t in tb.traductions %}
+              <tr>
+                <td>{{ t.libelle }}</td>
+                <td>{% if t.sans_fr %}<a href="{{ t.url_fr }}">{{ t.sans_fr }} missing</a>{% else %}<span class="tb-ok">✓</span>{% endif %}</td>
+                <td>{% if t.sans_sw %}<a href="{{ t.url_sw }}">{{ t.sans_sw }} missing</a>{% else %}<span class="tb-ok">✓</span>{% endif %}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p class="tb-discret">Untranslated content is shown in English on the French and Swahili pages.</p>
+      {% else %}
+        <p class="tb-ok-bloc">✓ Everything is translated into French and Swahili.</p>
+      {% endif %}
+    </section>
+
+    <section class="tb-bloc">
+      <h2>Site status</h2>
+      <ul class="tb-etat">
+        {% for libelle, ok, detail in tb.etat %}
+          <li class="{% if ok %}ok{% else %}ko{% endif %}"><span class="tb-pastille"></span><div><strong>{{ libelle }}</strong><span>{{ detail }}</span></div></li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section class="tb-bloc">
+      <h2>Latest donations <a class="tb-tout" href="{{ tb.dons.url }}">See all</a></h2>
+      {% if tb.dons.derniers %}
+        <table class="tb-table">
+          <tbody>
+            {% for d in tb.dons.derniers %}
+              <tr>
+                <td><strong>{% if d.anonyme %}Anonymous{% else %}{{ d.nom }}{% endif %}</strong><br><span class="tb-discret">{{ d.paye_le|date:"j M Y, H:i" }}</span></td>
+                <td class="tb-montant">${{ d.montant|floatformat:2 }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      {% else %}
+        <p class="tb-discret">No donation received yet.</p>
+      {% endif %}
+    </section>
+
+    <section class="tb-bloc">
+      <h2>Latest messages <a class="tb-tout" href="{{ tb.messages.url }}">See all</a></h2>
+      {% if tb.messages.derniers %}
+        <ul class="tb-messages">
+          {% for m in tb.messages.derniers %}
+            <li class="{% if not m.traite %}nouveau{% endif %}">
+              <a href="{% url 'admin:mainApp_contactmessage_change' m.pk %}">
+                <strong>{{ m.sujet }}</strong>
+                <span>{{ m.nom }} · {{ m.recu_le|date:"j M, H:i" }}</span>
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p class="tb-discret">No message yet.</p>
+      {% endif %}
+    </section>
+  </div>
+
+  <section class="tb-bloc tb-applications">
+    <h2>All sections</h2>
+    {% include "admin/app_list.html" with app_list=app_list show_changelinks=True %}
+  </section>
+</div>
+{% endblock %}
+
+{% block sidebar %}{% endblock %}

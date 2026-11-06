@@ -1,0 +1,62 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "Donations" %}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <p class="surtitre">{% translate "Community" %}</p>
+    <h1>{% translate "Donations" %}</h1>
+    <p class="discret">{% translate "Online donations received through Stripe." %}</p>
+  </div>
+  <div class="actions-page">
+    <a class="bouton bouton-clair" href="{% querystring export='csv' page=None %}">{% include "tableau/_icone.html" with nom="telecharger" %}{% translate "Export (Excel / CSV)" %}</a>
+  </div>
+</div>
+
+<div class="carte carte-tableau">
+  <form class="filtres" method="get">
+    <div class="filtre-recherche">
+      {% include "tableau/_icone.html" with nom="recherche" %}
+      <input type="search" name="q" value="{{ q }}" placeholder="{% translate 'Name, e-mail, message…' %}" aria-label="{% translate 'Search' %}">
+    </div>
+    <div class="segments">
+      <a href="{% querystring statut=None page=None %}" class="{% if not statut %}actif{% endif %}">{% translate "All" %}</a>
+      <a href="{% querystring statut='paid' page=None %}" class="{% if statut == 'paid' %}actif{% endif %}">{% translate "Paid" %}</a>
+      <a href="{% querystring statut='pending' page=None %}" class="{% if statut == 'pending' %}actif{% endif %}">{% translate "Pending" %}</a>
+      <a href="{% querystring statut='abandoned' page=None %}" class="{% if statut == 'abandoned' %}actif{% endif %}">{% translate "Abandoned" %}</a>
+    </div>
+    {% if statut %}<input type="hidden" name="statut" value="{{ statut }}">{% endif %}
+    <span class="compteur">{% translate "Total paid" %} · <strong>${{ total|floatformat:2 }}</strong></span>
+  </form>
+
+  {% if page.object_list %}
+    <div class="table-defilement">
+      <table class="table">
+        <thead>
+          <tr><th>{% translate "Donor" %}</th><th>{% translate "Date" %}</th><th>{% translate "Message" %}</th><th>{% translate "Status" %}</th><th class="droite">{% translate "Amount" %}</th></tr>
+        </thead>
+        <tbody>
+          {% for d in page.object_list %}
+            <tr>
+              <td><div class="ligne-contenu"><span class="avatar petit">{{ d.nom|slice:":1"|upper }}</span><span><strong>{{ d.nom }}{% if d.anonyme %} <em class="etiquette">{% translate "anonymous" %}</em>{% endif %}</strong><small><a href="mailto:{{ d.email }}">{{ d.email }}</a></small></span></div></td>
+              <td>{{ d.paye_le|default:d.cree_le|date:"j M Y, H:i" }}</td>
+              <td class="texte-coupe">{{ d.message|default:"—" }}</td>
+              <td><span class="statut statut-{{ d.statut }}">{{ d.get_statut_display }}</span></td>
+              <td class="droite montant">${{ d.montant|floatformat:2 }}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    {% include "tableau/_pagination.html" %}
+  {% else %}
+    <div class="vide">
+      {% include "tableau/_icone.html" with nom="dons" %}
+      <h3>{% translate "No donation" %}</h3>
+      <p class="discret">{% translate "Donations made on the website will appear here." %}</p>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

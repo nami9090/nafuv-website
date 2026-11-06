@@ -1,0 +1,5 @@
+<div class="champ">
+  <label for="{{ champ.id_for_label }}">{{ champ.label }}</label>
+  {{ champ }}
+  {% for e in champ.errors %}<div class="erreur">{{ e }}</div>{% endfor %}
+</div>

@@ -1,9 +1,8 @@
-django
-psycopg2-binary
+Django>=5.1,<6.0
 Pillow
 gunicorn
 whitenoise
-dj-database-url
-cloudinary 
-django-cloudinary-storage
-PyMySQL
+python-decouple
+# Database driver: keep the one used by your server
+psycopg2-binary   # PostgreSQL (local / VPS)
+PyMySQL           # MySQL (cPanel hosting)

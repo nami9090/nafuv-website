@@ -1,0 +1,32 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{% translate "Search" %}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <h1>{% translate "Search" %}</h1>
+    {% if q %}<p class="discret">{% blocktranslate count n=resultats|length with q=q %}{{ n }} result for “{{ q }}”{% plural %}{{ n }} results for “{{ q }}”{% endblocktranslate %}</p>{% endif %}
+  </div>
+</div>
+<div class="carte carte-tableau">
+  {% if resultats %}
+    <ul class="resultats">
+      {% for r in resultats %}
+        <li>
+          <a href="{{ r.url }}">
+            <span class="vignette">{% if r.image %}<img src="{{ r.image }}" alt="">{% elif r.section %}{% include "tableau/_icone.html" with nom=r.section.icone %}{% else %}{% include "tableau/_icone.html" with nom="messages" %}{% endif %}</span>
+            <span><strong>{{ r.titre }}</strong><small>{% if r.section %}{{ r.section.titre }}{% else %}{{ r.type }}{% endif %}</small></span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="vide">
+      {% include "tableau/_icone.html" with nom="recherche" %}
+      <h3>{% if q %}{% translate "No result" %}{% else %}{% translate "Type at least two letters" %}{% endif %}</h3>
+    </div>
+  {% endif %}
+</div>
+{% endblock %}

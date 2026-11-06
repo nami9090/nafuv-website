@@ -1,0 +1,959 @@
+msgid ""
+msgstr ""
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "Page not found"
+msgstr "Page introuvable"
+
+msgid "This page cannot be found"
+msgstr "Cette page est introuvable"
+
+msgid "It may have moved, or the address may be incorrect."
+msgstr "Elle a peut-être été déplacée, ou l'adresse est incorrecte."
+
+msgid "Back to the home page"
+msgstr "Retour à l'accueil"
+
+msgid "Explore the collections"
+msgstr "Explorer les collections"
+
+msgid "About the museum"
+msgstr "À propos du musée"
+
+msgid "Breadcrumb"
+msgstr "Fil d'Ariane"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "About"
+msgstr "À propos"
+
+msgid "Who we are"
+msgstr "Qui sommes-nous"
+
+msgid "How we work"
+msgstr "Notre démarche"
+
+msgid "Collect, protect, preserve, educate"
+msgstr "Collecter, protéger, préserver, transmettre"
+
+msgid "Background"
+msgstr "Contexte"
+
+msgid "Mission"
+msgstr "Mission"
+
+msgid "Activities"
+msgstr "Activités"
+
+msgid "Be part of the story"
+msgstr "Faites partie de l'histoire"
+
+msgid "Share an object, a photograph or a memory, volunteer, or support the museum with a donation."
+msgstr "Partagez un objet, une photographie ou un souvenir, devenez bénévole ou soutenez le musée par un don."
+
+msgid "Donate"
+msgstr "Faire un don"
+
+msgid "Contact us"
+msgstr "Nous contacter"
+
+msgid "Our team"
+msgstr "Notre équipe"
+
+msgid "Team"
+msgstr "Équipe"
+
+msgid "The people behind the museum"
+msgstr "Les personnes derrière le musée"
+
+msgid "Volunteers, elders, researchers and members of the community who collect and share our heritage."
+msgstr "Bénévoles, anciens, chercheurs et membres de la communauté qui collectent et partagent notre patrimoine."
+
+msgid "Content coming soon."
+msgstr "Contenu bientôt disponible."
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact the NAFUV virtual museum: share an object or a memory, ask a question, or get involved."
+msgstr "Contactez le musée virtuel NAFUV : partagez un objet ou un souvenir, posez une question ou impliquez-vous."
+
+msgid "Let's talk"
+msgstr "Parlons-en"
+
+msgid "A question, an object or a photograph to share, a wish to volunteer? Write to us."
+msgstr "Une question, un objet ou une photographie à partager, l'envie de vous engager ? Écrivez-nous."
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Phone"
+msgstr "Téléphone"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Opening hours"
+msgstr "Horaires"
+
+msgid "Send the message"
+msgstr "Envoyer le message"
+
+msgid "Make a donation"
+msgstr "Faire un don"
+
+msgid "Support the museum"
+msgstr "Soutenir le musée"
+
+msgid "Help us preserve our heritage"
+msgstr "Aidez-nous à préserver notre patrimoine"
+
+msgid "Collect"
+msgstr "Collecter"
+
+msgid "Digitise objects, photographs and documents before they are lost."
+msgstr "Numériser objets, photographies et documents avant qu'ils ne disparaissent."
+
+msgid "Record"
+msgstr "Enregistrer"
+
+msgid "Record the voices, proverbs and stories of our elders."
+msgstr "Enregistrer les voix, proverbes et récits de nos anciens."
+
+msgid "Share"
+msgstr "Partager"
+
+msgid "Support the cultural museum in Uvira and our yearly exhibition."
+msgstr "Soutenir le musée culturel d'Uvira et notre exposition annuelle."
+
+msgid "Thank you to our recent donors"
+msgstr "Merci à nos derniers donateurs"
+
+msgid "Choose an amount"
+msgstr "Choisissez un montant"
+
+msgid "Or another amount (USD)"
+msgstr "Ou un autre montant (USD)"
+
+msgid "Continue to secure payment"
+msgstr "Continuer vers le paiement sécurisé"
+
+msgid "Secure card payment by Stripe. Your card details never reach our website."
+msgstr "Paiement sécurisé par carte avec Stripe. Vos données bancaires ne transitent jamais par notre site."
+
+msgid "Online donations are coming soon"
+msgstr "Les dons en ligne arrivent bientôt"
+
+msgid "In the meantime, please contact us to make a donation:"
+msgstr "En attendant, contactez-nous pour faire un don :"
+
+msgid "Thank you"
+msgstr "Merci"
+
+msgid "Thank you for your generosity!"
+msgstr "Merci pour votre générosité !"
+
+msgid "Your payment is being confirmed. You will receive a confirmation e-mail in a few moments."
+msgstr "Votre paiement est en cours de confirmation. Vous recevrez un e-mail de confirmation dans quelques instants."
+
+msgid "Together, we keep the heritage of the Fuliiru and Vira peoples alive for the next generations."
+msgstr "Ensemble, nous faisons vivre le patrimoine des peuples Fuliiru et Vira pour les générations futures."
+
+msgid "Thank you, %(nom)s!"
+msgstr "Merci, %(nom)s !"
+
+msgid "Your donation of $%(montant)s has been received. A confirmation e-mail is on its way."
+msgstr "Votre don de %(montant)s $ a bien été reçu. Un e-mail de confirmation vous a été envoyé."
+
+msgid "Collections"
+msgstr "Collections"
+
+msgid "Continue exploring"
+msgstr "Continuer la visite"
+
+msgid "Other collections"
+msgstr "Autres collections"
+
+msgid "Image viewer"
+msgstr "Visionneuse d'images"
+
+msgid "Close"
+msgstr "Fermer"
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "Enlarge: %(titre)s"
+msgstr "Agrandir : %(titre)s"
+
+msgid "Objects, photographs and memories of the Fuliiru and Vira peoples, preserved by the NAFUV virtual museum."
+msgstr "Objets, photographies et souvenirs des peuples Fuliiru et Vira, préservés par le musée virtuel NAFUV."
+
+msgid "Objects, photographs and memories"
+msgstr "Objets, photographies et souvenirs"
+
+msgid "Each collection gathers artifacts, images and stories inherited from our ancestors."
+msgstr "Chaque collection rassemble des objets, des images et des récits hérités de nos ancêtres."
+
+msgid "%(n)s item"
+msgid_plural "%(n)s items"
+msgstr[0] "%(n)s élément"
+msgstr[1] "%(n)s éléments"
+
+msgid "The virtual museum of the Fuliiru and Vira peoples"
+msgstr "Le musée virtuel des peuples Fuliiru et Vira"
+
+msgid "Featured"
+msgstr "À la une"
+
+msgid "North America Fuliiru Vira Virtual Museum"
+msgstr "Musée virtuel Fuliiru Vira d'Amérique du Nord"
+
+msgid "Our heritage, for every generation"
+msgstr "Notre patrimoine, pour chaque génération"
+
+msgid "Discover the kingdoms"
+msgstr "Découvrir les royaumes"
+
+msgid "Our story and mission"
+msgstr "Notre histoire et notre mission"
+
+msgid "Ancestral kingdoms"
+msgstr "Royaumes ancestraux"
+
+msgid "Rulers documented"
+msgstr "Souverains répertoriés"
+
+msgid "Objects & photographs"
+msgstr "Objets et photographies"
+
+msgid "Languages"
+msgstr "Langues"
+
+msgid "Kingdoms & heritage"
+msgstr "Royaumes et patrimoine"
+
+msgid "Discover the land of Uvira"
+msgstr "Découvrez la terre d'Uvira"
+
+msgid "The ancestral kingdoms, their royal lineages and the programmes that keep the culture of the Fuliiru and Vira peoples alive."
+msgstr "Les royaumes ancestraux, leurs lignées royales et les programmes qui font vivre la culture des peuples Fuliiru et Vira."
+
+msgid "Kingdom"
+msgstr "Royaume"
+
+msgid "See all the heritage"
+msgstr "Voir tout le patrimoine"
+
+msgid "Browse all collections"
+msgstr "Parcourir toutes les collections"
+
+msgid "Slide %(n)s"
+msgstr "Diapositive %(n)s"
+
+msgid "The virtual museum of the Fuliiru and Vira peoples: kingdoms, royal lineages, objects, photographs and living heritage from Uvira, DR Congo."
+msgstr "Le musée virtuel des peuples Fuliiru et Vira : royaumes, lignées royales, objets, photographies et patrimoine vivant d'Uvira, en RD Congo."
+
+msgid "Skip to content"
+msgstr "Aller au contenu"
+
+msgid "home"
+msgstr "accueil"
+
+msgid "Virtual Museum"
+msgstr "Musée virtuel"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Main navigation"
+msgstr "Navigation principale"
+
+msgid "Heritage"
+msgstr "Patrimoine"
+
+msgid "Language"
+msgstr "Langue"
+
+msgid "Explore"
+msgstr "Explorer"
+
+msgid "Visit & contact"
+msgstr "Visite et contact"
+
+msgid "Support us"
+msgstr "Nous soutenir"
+
+msgid "Every gift helps preserve our heritage for the next generations."
+msgstr "Chaque don aide à préserver notre patrimoine pour les générations futures."
+
+msgid "All rights reserved"
+msgstr "Tous droits réservés"
+
+msgid "Developed by"
+msgstr "Développé par"
+
+msgid "Ancestral kingdom"
+msgstr "Royaume ancestral"
+
+msgid "Royal lineage"
+msgstr "Lignée royale"
+
+msgid "rulers documented"
+msgstr "souverains répertoriés"
+
+msgid "Current ruler:"
+msgstr "Souverain actuel :"
+
+msgid "See the lineage"
+msgstr "Voir la lignée"
+
+msgid "All the heritage"
+msgstr "Tout le patrimoine"
+
+msgid "Reigning"
+msgstr "Règne actuel"
+
+msgid "More heritage"
+msgstr "Plus de patrimoine"
+
+msgid "The rulers of %(royaume)s"
+msgstr "Les souverains de %(royaume)s"
+
+msgid "since %(debut)s"
+msgstr "depuis %(debut)s"
+
+msgid "%(annees)s year of reign"
+msgid_plural "%(annees)s years of reign"
+msgstr[0] "%(annees)s an de règne"
+msgstr[1] "%(annees)s ans de règne"
+
+msgid "The ancestral kingdoms of the Fuliiru and Vira peoples, their royal lineages and our cultural programmes."
+msgstr "Les royaumes ancestraux des peuples Fuliiru et Vira, leurs lignées royales et nos programmes culturels."
+
+msgid "The land of Uvira"
+msgstr "La terre d'Uvira"
+
+msgid "Kingdoms and royal lineages"
+msgstr "Royaumes et lignées royales"
+
+msgid "What we do"
+msgstr "Ce que nous faisons"
+
+msgid "Programmes and activities"
+msgstr "Programmes et activités"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Page %(n)s of %(total)s"
+msgstr "Page %(n)s sur %(total)s"
+
+msgid "Overview"
+msgstr "Vue d'ensemble"
+
+msgid "Here is what is happening on the museum's website."
+msgstr "Voici ce qui se passe sur le site du musée."
+
+msgid "New collection"
+msgstr "Nouvelle collection"
+
+msgid "New heritage page"
+msgstr "Nouvelle page patrimoine"
+
+msgid "Donations this year"
+msgstr "Dons de l'année"
+
+msgid "This month"
+msgstr "Ce mois-ci"
+
+msgid "Total received"
+msgstr "Total reçu"
+
+msgid "Messages to answer"
+msgstr "Messages à traiter"
+
+msgid "From the contact form"
+msgstr "Depuis le formulaire de contact"
+
+msgid "In the royal lineages"
+msgstr "Dans les lignées royales"
+
+msgid "Donations over the last 12 months"
+msgstr "Dons des 12 derniers mois"
+
+msgid "Paid donations, in US dollars"
+msgstr "Dons payés, en dollars US"
+
+msgid "See all"
+msgstr "Tout voir"
+
+msgid "Site status"
+msgstr "État du site"
+
+msgid "Museum content"
+msgstr "Contenu du musée"
+
+msgid "Translations"
+msgstr "Traductions"
+
+msgid "Share of content translated"
+msgstr "Part du contenu traduit"
+
+msgid "No content yet."
+msgstr "Pas encore de contenu."
+
+msgid "Latest donations"
+msgstr "Derniers dons"
+
+msgid "Anonymous"
+msgstr "Anonyme"
+
+msgid "No donation received yet."
+msgstr "Aucun don reçu pour l'instant."
+
+msgid "Latest messages"
+msgstr "Derniers messages"
+
+msgid "No message yet."
+msgstr "Aucun message pour l'instant."
+
+msgid "Hello, %(nom)s"
+msgstr "Bonjour, %(nom)s"
+
+msgid "%(n)s donation"
+msgid_plural "%(n)s donations"
+msgstr[0] "%(n)s don"
+msgstr[1] "%(n)s dons"
+
+msgid "%(n)s payment started but not finished on Stripe."
+msgid_plural "%(n)s payments started but not finished on Stripe."
+msgstr[0] "%(n)s paiement commencé mais non terminé sur Stripe."
+msgstr[1] "%(n)s paiements commencés mais non terminés sur Stripe."
+
+msgid "Dashboard"
+msgstr "Tableau de bord"
+
+msgid "Dashboard navigation"
+msgstr "Navigation du tableau de bord"
+
+msgid "Community"
+msgstr "Communauté"
+
+msgid "Donations"
+msgstr "Dons"
+
+msgid "Messages"
+msgstr "Messages"
+
+msgid "Settings"
+msgstr "Paramètres"
+
+msgid "Site settings"
+msgstr "Réglages du site"
+
+msgid "My account"
+msgstr "Mon compte"
+
+msgid "Advanced admin"
+msgstr "Administration avancée"
+
+msgid "View the website"
+msgstr "Voir le site"
+
+msgid "Search the content, donations, messages…"
+msgstr "Rechercher dans le contenu, les dons, les messages…"
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Website"
+msgstr "Site"
+
+msgid "Log out"
+msgstr "Se déconnecter"
+
+msgid "Change my password"
+msgstr "Changer mon mot de passe"
+
+msgid "Change the password"
+msgstr "Changer le mot de passe"
+
+msgid "Log in"
+msgstr "Se connecter"
+
+msgid "Preserve, share and pass on the heritage of the Fuliiru and Vira peoples."
+msgstr "Préserver, partager et transmettre le patrimoine des peuples Fuliiru et Vira."
+
+msgid "Log in to manage the museum's website."
+msgstr "Connectez-vous pour gérer le site du musée."
+
+msgid "Back to the website"
+msgstr "Retour au site"
+
+msgid "Online donations received through Stripe."
+msgstr "Dons en ligne reçus via Stripe."
+
+msgid "Export (Excel / CSV)"
+msgstr "Exporter (Excel / CSV)"
+
+msgid "Name, e-mail, message…"
+msgstr "Nom, e-mail, message…"
+
+msgid "All"
+msgstr "Tout"
+
+msgid "Paid"
+msgstr "Payé"
+
+msgid "Pending"
+msgstr "En attente"
+
+msgid "Abandoned"
+msgstr "Abandonné"
+
+msgid "Total paid"
+msgstr "Total payé"
+
+msgid "Donor"
+msgstr "Donateur"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Message"
+msgstr "Message"
+
+msgid "Status"
+msgstr "Statut"
+
+msgid "Amount"
+msgstr "Montant"
+
+msgid "anonymous"
+msgstr "anonyme"
+
+msgid "No donation"
+msgstr "Aucun don"
+
+msgid "Donations made on the website will appear here."
+msgstr "Les dons faits sur le site apparaîtront ici."
+
+msgid "Contact details, social networks and the texts of the About and Donate pages."
+msgstr "Coordonnées, réseaux sociaux et textes des pages À propos et Dons."
+
+msgid "View on the website"
+msgstr "Voir sur le site"
+
+msgid "Save and keep editing"
+msgstr "Enregistrer et continuer"
+
+msgid "Save"
+msgstr "Enregistrer"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Organisation & social networks"
+msgstr "Organisation et réseaux sociaux"
+
+msgid "Details"
+msgstr "Détails"
+
+msgid "Add pictures"
+msgstr "Ajouter des images"
+
+msgid "Click or drop several pictures at once. They are added when you save."
+msgstr "Cliquez ou déposez plusieurs images à la fois. Elles sont ajoutées à l'enregistrement."
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Add a row"
+msgstr "Ajouter une ligne"
+
+msgid "No picture yet"
+msgstr "Pas encore d'image"
+
+msgid "JPEG, PNG or WebP. Pictures are turned the right way up, resized and compressed automatically."
+msgstr "JPEG, PNG ou WebP. Les images sont redressées, redimensionnées et compressées automatiquement."
+
+msgid "Options"
+msgstr "Options"
+
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "New %(nom)s"
+msgstr "Nouveau : %(nom)s"
+
+msgid "%(langue)s version. Leave a field empty to show the English text."
+msgstr "Version %(langue)s. Laissez un champ vide pour afficher le texte anglais."
+
+msgid "Search…"
+msgstr "Rechercher…"
+
+msgid "All translations"
+msgstr "Toutes les traductions"
+
+msgid "French missing"
+msgstr "Français manquant"
+
+msgid "Swahili missing"
+msgstr "Swahili manquant"
+
+msgid "Order"
+msgstr "Ordre"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Translated"
+msgstr "Traduit"
+
+msgid "Not translated"
+msgstr "Non traduit"
+
+msgid "Edit"
+msgstr "Modifier"
+
+msgid "No result"
+msgstr "Aucun résultat"
+
+msgid "Nothing here yet"
+msgstr "Rien pour l'instant"
+
+msgid "Try another search or remove the filters."
+msgstr "Essayez une autre recherche ou retirez les filtres."
+
+msgid "Start by adding the first item."
+msgstr "Commencez par ajouter le premier élément."
+
+msgid "Add"
+msgstr "Ajouter"
+
+msgid "Add a %(nom)s"
+msgstr "Ajouter : %(nom)s"
+
+msgid "Mark as to be handled"
+msgstr "Marquer comme à traiter"
+
+msgid "Mark as handled"
+msgstr "Marquer comme traité"
+
+msgid "Reply by e-mail"
+msgstr "Répondre par e-mail"
+
+msgid "Handled"
+msgstr "Traités"
+
+msgid "To handle"
+msgstr "À traiter"
+
+msgid "Messages sent through the contact form of the website."
+msgstr "Messages envoyés via le formulaire de contact du site."
+
+msgid "Name, e-mail, subject…"
+msgstr "Nom, e-mail, objet…"
+
+msgid "No message"
+msgstr "Aucun message"
+
+msgid "Messages from the contact form will appear here."
+msgstr "Les messages du formulaire de contact apparaîtront ici."
+
+msgid "Type at least two letters"
+msgstr "Tapez au moins deux lettres"
+
+msgid "%(n)s result for “%(q)s”"
+msgid_plural "%(n)s results for “%(q)s”"
+msgstr[0] "%(n)s résultat pour « %(q)s »"
+msgstr[1] "%(n)s résultats pour « %(q)s »"
+
+msgid "This cannot be undone."
+msgstr "Cette action est irréversible."
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Yes, delete"
+msgstr "Oui, supprimer"
+
+msgid "Delete “%(nom)s”?"
+msgstr "Supprimer « %(nom)s » ?"
+
+msgid "The linked items (%(elements)s) will be deleted too."
+msgstr "Les éléments liés (%(elements)s) seront aussi supprimés."
+
+msgid "Your name"
+msgstr "Votre nom"
+
+msgid "Your e-mail"
+msgstr "Votre e-mail"
+
+msgid "Subject"
+msgstr "Objet"
+
+msgid "Amount (USD)"
+msgstr "Montant (USD)"
+
+msgid "Full name"
+msgstr "Nom complet"
+
+msgid "E-mail (for your receipt)"
+msgstr "E-mail (pour votre reçu)"
+
+msgid "Message (optional)"
+msgstr "Message (facultatif)"
+
+msgid "Keep my donation anonymous"
+msgstr "Garder mon don anonyme"
+
+msgid "Please enter a valid amount."
+msgstr "Veuillez saisir un montant valide."
+
+msgid "The minimum donation is $%(min)s."
+msgstr "Le don minimum est de %(min)s $."
+
+msgid "For donations above $%(max)s, please contact us directly."
+msgstr "Pour un don supérieur à %(max)s $, merci de nous contacter directement."
+
+msgid "Thank you! Your message has been sent. We will reply as soon as possible."
+msgstr "Merci ! Votre message a bien été envoyé. Nous vous répondrons dès que possible."
+
+msgid "Your donation was cancelled. No payment has been taken."
+msgstr "Votre don a été annulé. Aucun paiement n'a été effectué."
+
+msgid "Online donations are not available yet. Please contact us."
+msgstr "Les dons en ligne ne sont pas encore disponibles. Merci de nous contacter."
+
+msgid "The payment service is unavailable right now. Please try again in a few minutes."
+msgstr "Le service de paiement est momentanément indisponible. Veuillez réessayer dans quelques minutes."
+
+msgid "Donation to %(name)s"
+msgstr "Don à %(name)s"
+
+msgid "English"
+msgstr "Anglais"
+
+msgid "French"
+msgstr "Français"
+
+msgid "Swahili"
+msgstr "Swahili"
+
+msgid "Username or e-mail"
+msgstr "Identifiant ou e-mail"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Picture"
+msgstr "Image"
+
+msgid "Small text above the title"
+msgstr "Petit texte au-dessus du titre"
+
+msgid "Title"
+msgstr "Titre"
+
+msgid "Text"
+msgstr "Texte"
+
+msgid "Display order"
+msgstr "Ordre d'affichage"
+
+msgid "First paragraph"
+msgstr "Premier paragraphe"
+
+msgid "Second paragraph"
+msgstr "Deuxième paragraphe"
+
+msgid "Web address"
+msgstr "Adresse web"
+
+msgid "This page is a kingdom (shows the royal lineage)"
+msgstr "Cette page est un royaume (affiche la lignée royale)"
+
+msgid "Subtitle"
+msgstr "Sous-titre"
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Role"
+msgstr "Rôle"
+
+msgid "X / Twitter link"
+msgstr "Lien X / Twitter"
+
+msgid "Facebook link"
+msgstr "Lien Facebook"
+
+msgid "Instagram link"
+msgstr "Lien Instagram"
+
+msgid "LinkedIn link"
+msgstr "Lien LinkedIn"
+
+msgid "Start of reign"
+msgstr "Début du règne"
+
+msgid "Still reigning"
+msgstr "Règne toujours"
+
+msgid "End of reign"
+msgstr "Fin du règne"
+
+msgid "Organisation name"
+msgstr "Nom de l'organisation"
+
+msgid "Tagline"
+msgstr "Slogan"
+
+msgid "Public e-mail"
+msgstr "E-mail public"
+
+msgid "About page: background"
+msgstr "Page À propos : contexte"
+
+msgid "About page: mission"
+msgstr "Page À propos : mission"
+
+msgid "About page: activities"
+msgstr "Page À propos : activités"
+
+msgid "Donate page: introduction"
+msgstr "Page Dons : introduction"
+
+msgid "Empty line = new paragraph · ## Heading · - list item · **bold**"
+msgstr "Ligne vide = nouveau paragraphe · ## Intertitre · - élément de liste · **gras**"
+
+msgid "Created automatically from the title if left empty."
+msgstr "Créée automatiquement à partir du titre si laissée vide."
+
+msgid "Smaller numbers are shown first."
+msgstr "Les plus petits nombres s'affichent en premier."
+
+msgid "Leave empty if the ruler is still reigning."
+msgstr "Laisser vide si le souverain règne toujours."
+
+msgid "settings"
+msgstr "réglages"
+
+msgid "Home slides"
+msgstr "Diapositives d'accueil"
+
+msgid "slide"
+msgstr "diapositive"
+
+msgid "The large pictures at the top of the home page."
+msgstr "Les grandes images en haut de la page d'accueil."
+
+msgid "presentation text"
+msgstr "texte de présentation"
+
+msgid "The presentation shown on the home page and the About page."
+msgstr "La présentation affichée sur l'accueil et la page À propos."
+
+msgid "heritage page"
+msgstr "page patrimoine"
+
+msgid "The ancestral kingdoms, their royal lineage, and the museum's programmes."
+msgstr "Les royaumes ancestraux, leur lignée royale et les programmes du musée."
+
+msgid "collection"
+msgstr "collection"
+
+msgid "Galleries of objects, photographs and memories."
+msgstr "Galeries d'objets, de photographies et de souvenirs."
+
+msgid "team member"
+msgstr "membre de l'équipe"
+
+msgid "The people behind the museum."
+msgstr "Les personnes derrière le musée."
+
+msgid "Pictures"
+msgstr "Images"
+
+msgid "Objects & photos"
+msgstr "Objets et photos"
+
+msgid "Kingdoms"
+msgstr "Royaumes"
+
+msgid "Programmes"
+msgstr "Programmes"
+
+msgid "You are logged out."
+msgstr "Vous êtes déconnecté."
+
+msgid "Saved."
+msgstr "Enregistré."
+
+msgid "Incorrect username or password, or this account has no access to the dashboard."
+msgstr "Identifiant ou mot de passe incorrect, ou ce compte n'a pas accès au tableau de bord."
+
+msgid "Online donations"
+msgstr "Dons en ligne"
+
+msgid "E-mails"
+msgstr "E-mails"
+
+msgid "Production mode"
+msgstr "Mode production"
+
+msgid "Please correct the errors shown below."
+msgstr "Veuillez corriger les erreurs indiquées ci-dessous."
+
+msgid "Your password has been changed."
+msgstr "Votre mot de passe a été modifié."
+
+msgid "Stripe keys missing in the .env file"
+msgstr "Clés Stripe absentes du fichier .env"
+
+msgid "Sent for real"
+msgstr "Réellement envoyés"
+
+msgid "Not sent: configure SMTP in the .env file"
+msgstr "Non envoyés : configurez le SMTP dans le fichier .env"
+
+msgid "DEBUG off"
+msgstr "DEBUG désactivé"
+
+msgid "DEBUG is on"
+msgstr "DEBUG est activé"
+
+msgid "“%(nom)s” has been deleted."
+msgstr "« %(nom)s » a été supprimé."
+
+msgid "Site settings saved."
+msgstr "Réglages du site enregistrés."
+
+msgid "Marked as handled."
+msgstr "Marqué comme traité."
+
+msgid "Marked as to be handled."
+msgstr "Marqué comme à traiter."
+
+msgid "Test mode: no real money is collected"
+msgstr "Mode test : aucun argent réel n'est encaissé"
+
+msgid "Active"
+msgstr "Actif"
+
+msgid "%(n)s picture(s) added."
+msgstr "%(n)s image(s) ajoutée(s)."
+
+msgid "Donation"
+msgstr "Don"

@@ -1,0 +1,110 @@
+/* NAFUV administration theme + dashboard. Developed by Nami Industries. */
+
+:root, html[data-theme="light"], html[data-theme="dark"] {
+  --primary: #5a3720;
+  --secondary: #1e1611;
+  --accent: #ecd3a5;
+  --primary-fg: #fbf8f2;
+  --body-bg: #fbf8f2;
+  --body-fg: #1e1611;
+  --body-quiet-color: #6e655c;
+  --header-bg: #1e1611;
+  --header-color: #ecd3a5;
+  --header-link-color: #fbf8f2;
+  --header-branding-color: #fbf8f2;
+  --breadcrumbs-bg: #5a3720;
+  --breadcrumbs-fg: #ecd3a5;
+  --breadcrumbs-link-fg: #fbf8f2;
+  --link-fg: #94601f;
+  --link-hover-color: #5a3720;
+  --link-selected-fg: #5a3720;
+  --hairline-color: #e4d9c8;
+  --border-color: #e4d9c8;
+  --darkened-bg: #f6f0e6;
+  --selected-bg: #f6ead6;
+  --selected-row: #fbf1df;
+  --button-bg: #b7792b;
+  --button-hover-bg: #94601f;
+  --default-button-bg: #5a3720;
+  --default-button-hover-bg: #1e1611;
+  --object-tools-bg: #b7792b;
+  --object-tools-hover-bg: #94601f;
+  --font-family-primary: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+#header { padding: 12px 40px; }
+.nafuv-marque { display: inline-flex; align-items: center; gap: 12px; text-decoration: none !important; }
+.nafuv-marque img { background: #fbf8f2; border-radius: 8px; padding: 3px; }
+.nafuv-marque span { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.45rem; font-weight: 700; color: #fbf8f2; letter-spacing: .02em; }
+.nafuv-marque small { font-family: var(--font-family-primary); font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: #ecd3a5; font-weight: 500; margin-left: 4px; }
+#content h1 { font-family: "Cormorant Garamond", Georgia, serif; font-weight: 700; }
+fieldset .description { background: #f6f0e6; border-left: 3px solid #b7792b; padding: 10px 14px !important; border-radius: 6px; color: #5a3720; }
+
+/* Dashboard ------------------------------------------------------------------ */
+.nafuv-tableau #content { padding: 24px 40px 40px; max-width: 1400px; }
+.tb { display: grid; gap: 22px; }
+.tb a { text-decoration: none; }
+.tb-discret { color: var(--body-quiet-color); font-size: .85rem; }
+.tb-surtitre { text-transform: uppercase; letter-spacing: .14em; font-size: .72rem; color: #94601f; font-weight: 600; margin: 0 0 4px; }
+
+.tb-entete { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px; flex-wrap: wrap; padding: 26px 30px; border-radius: 16px; background: #1e1611; color: #e8dccb; }
+.tb-entete h1 { color: #fbf8f2 !important; font-size: 2.3rem !important; margin: 0 0 4px !important; padding: 0 !important; }
+.tb-entete .tb-discret { color: #cfc4b4; margin: 0; }
+.tb-liens-site { display: flex; gap: 8px; }
+.tb-bouton { display: inline-block; padding: 10px 18px; border-radius: 999px; background: #b7792b; color: #fff !important; font-weight: 600; }
+.tb-bouton:hover { background: #94601f; }
+.tb-bouton-clair { background: transparent; border: 1px solid rgba(246, 240, 230, .4); }
+.tb-bouton-clair:hover { background: rgba(246, 240, 230, .12); }
+
+.tb-chiffres { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.tb-carte { display: flex; flex-direction: column; gap: 4px; padding: 20px 22px; border-radius: 14px; background: #fff; border: 1px solid var(--hairline-color); color: var(--body-fg) !important; transition: transform .2s, box-shadow .2s; }
+.tb-carte:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -20px rgba(30, 22, 17, .5); }
+.tb-carte strong { font-family: "Cormorant Garamond", Georgia, serif; font-size: 2.4rem; line-height: 1.05; font-weight: 700; }
+.tb-libelle { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--body-quiet-color); font-weight: 600; }
+.tb-carte-ocre { background: #b7792b; border-color: #b7792b; color: #fff !important; }
+.tb-carte-ocre .tb-libelle, .tb-carte-ocre .tb-discret { color: #fbf1df; }
+.tb-carte-alerte { border-color: #e2a08f; background: #fbefec; }
+
+.tb-grille { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+.tb-bloc { background: #fff; border: 1px solid var(--hairline-color); border-radius: 14px; padding: 20px 22px; }
+.tb-bloc h2 { font-family: "Cormorant Garamond", Georgia, serif; font-size: 1.45rem; font-weight: 700; margin: 0 0 14px; color: var(--body-fg); background: none; padding: 0; display: flex; justify-content: space-between; align-items: baseline; text-transform: none; letter-spacing: 0; }
+.tb-tout { font-family: var(--font-family-primary); font-size: .8rem; font-weight: 600; }
+
+.tb-actions { display: grid; gap: 8px; }
+.tb-actions a { display: block; padding: 11px 14px; border-radius: 10px; background: #f6f0e6; color: #5a3720 !important; font-weight: 600; }
+.tb-actions a:hover { background: #f0e1c7; }
+
+.tb-contenus { list-style: none; margin: 0; padding: 0; }
+.tb-contenus li { list-style: none; padding: 0; }
+.tb-contenus a { display: flex; justify-content: space-between; padding: 9px 2px; border-bottom: 1px solid var(--hairline-color); color: var(--body-fg) !important; }
+.tb-contenus li:last-child a { border-bottom: 0; }
+.tb-contenus strong { font-size: 1.05rem; }
+
+.tb-table { width: 100%; border-collapse: collapse; }
+.tb-table th { text-align: left; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--body-quiet-color); background: none; padding: 6px 4px; border-bottom: 1px solid var(--hairline-color); }
+.tb-table td { padding: 9px 4px; border-bottom: 1px solid var(--hairline-color); vertical-align: middle; }
+.tb-table tr:last-child td { border-bottom: 0; }
+.tb-montant { text-align: right; font-weight: 700; font-size: 1.05rem; white-space: nowrap; }
+.tb-ok { color: #2f7a4a; font-weight: 700; }
+.tb-ok-bloc { background: #eef6f0; color: #2f6b45; padding: 12px 14px; border-radius: 10px; margin: 0; }
+
+.tb-etat { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.tb-etat li { list-style: none; display: grid; grid-template-columns: 14px 1fr; gap: 12px; align-items: start; padding: 0; }
+.tb-etat strong { display: block; }
+.tb-etat span { color: var(--body-quiet-color); font-size: .85rem; }
+.tb-pastille { width: 12px; height: 12px; border-radius: 50%; margin-top: 4px; background: #2f9a5a; box-shadow: 0 0 0 4px #e3f3e9; }
+.tb-etat li.ko .tb-pastille { background: #d2731f; box-shadow: 0 0 0 4px #fbeadb; }
+
+.tb-messages { list-style: none; margin: 0; padding: 0; }
+.tb-messages li { list-style: none; padding: 0; }
+.tb-messages a { display: block; padding: 9px 10px; border-radius: 8px; color: var(--body-fg) !important; }
+.tb-messages a:hover { background: #f6f0e6; }
+.tb-messages span { display: block; color: var(--body-quiet-color); font-size: .82rem; }
+.tb-messages li.nouveau strong::before { content: "●"; color: #b7792b; margin-right: 6px; font-size: .7rem; vertical-align: middle; }
+
+.tb-applications .module { margin-bottom: 14px; }
+.tb-applications #content-main { float: none; width: auto; }
+@media (max-width: 767px) {
+  .nafuv-tableau #content { padding: 16px; }
+  .tb-entete { padding: 20px; }
+}

@@ -1,0 +1,36 @@
+{% extends "tableau/base.html" %}
+{% load i18n %}
+
+{% block titre %}{{ msg.sujet }}{% endblock %}
+
+{% block contenu %}
+<div class="entete-page">
+  <div>
+    <a class="retour" href="{% url 'tableau:messages' %}">{% include "tableau/_icone.html" with nom="retour" %}{% translate "Messages" %}</a>
+    <h1>{{ msg.sujet }}</h1>
+  </div>
+  <div class="actions-page">
+    <form method="post">{% csrf_token %}
+      <button type="submit" class="bouton bouton-clair">{% if msg.traite %}{% translate "Mark as to be handled" %}{% else %}{% include "tableau/_icone.html" with nom="check" %}{% translate "Mark as handled" %}{% endif %}</button>
+    </form>
+    <a class="bouton bouton-principal" href="mailto:{{ msg.email }}?subject=Re: {{ msg.sujet|urlencode }}">{% include "tableau/_icone.html" with nom="messages" %}{% translate "Reply by e-mail" %}</a>
+  </div>
+</div>
+
+<div class="edition">
+  <section class="carte edition-principal">
+    <div class="message-auteur">
+      <span class="avatar">{{ msg.nom|slice:":1"|upper }}</span>
+      <div><strong>{{ msg.nom }}</strong><a href="mailto:{{ msg.email }}">{{ msg.email }}</a></div>
+      <time>{{ msg.recu_le|date:"l j F Y, H:i" }}</time>
+    </div>
+    <div class="message-corps">{{ msg.message|linebreaks }}</div>
+  </section>
+  <aside class="edition-cote">
+    <section class="carte">
+      <div class="carte-entete"><h2>{% translate "Status" %}</h2></div>
+      <span class="statut {% if msg.traite %}statut-paid{% else %}statut-pending{% endif %}">{% if msg.traite %}{% translate "Handled" %}{% else %}{% translate "To handle" %}{% endif %}</span>
+    </section>
+  </aside>
+</div>
+{% endblock %}
