@@ -9,7 +9,7 @@ git push (ton PC)
 ```
 - Si un test échoue, la branche `production` ne change pas : **rien n'est déployé**.
 - GitHub ne se connecte jamais au serveur (l'hébergement n'accepte pas le SSH venant de l'extérieur) : c'est le serveur qui récupère la version validée, avec sa clé de lecture seule.
-
+## ceci est un test
 ## Fichiers
 | Fichier | Rôle |
 |---|---|
