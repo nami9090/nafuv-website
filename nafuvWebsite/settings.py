@@ -163,7 +163,9 @@ STORAGES = {
         "BACKEND": (
             "django.contrib.staticfiles.storage.StaticFilesStorage"
             if DEBUG
-            else "whitenoise.storage.CompressedManifestStaticFilesStorage"
+            # Compression without manifest: the old template CSS files in
+            # static/assets contain broken links that a manifest would refuse.
+            else "whitenoise.storage.CompressedStaticFilesStorage"
         )
     },
 }
